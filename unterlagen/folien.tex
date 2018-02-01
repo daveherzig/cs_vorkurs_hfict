@@ -12,6 +12,7 @@
 \usepackage{multicol}
 
 \usepackage{beamerthemesplit}
+
 \usetheme{Malmoe}
 
 %\usepackage{pgfpages}
@@ -32,8 +33,8 @@
         commentstyle=\color{cmtcolor}}
 
 \title{HF-ICT Informatik Vorkurs}
-\author{David Herzig (dave.herzig@gmail.com)}
-\date{\today}
+\author{Author: David Herzig (dave.herzig@gmail.com) / Revision [2018]: Patrik Suetterlin (p.suetterlin@hf-ict.ch)}
+\date{20. Januar 2018}
 
 \begin{document}
 
@@ -189,26 +190,62 @@
 	\frametitle{"Ubungen - L"osungen}
 	\begin{enumerate}
 	\item $53_{10} \Rightarrow 110101_2$
-	\item $1025_{10} \Rightarrow 3FF_{16}$
+	\item $1023_{10} \Rightarrow 3FF_{16}$
 	\item $452_{10} \Rightarrow 704_8$
 	\item $66_{10} \Rightarrow 1000010_2$
 	\end{enumerate}
 }
 
+\frame 
+{
+	\frametitle{Zahlensysteme - Umwandlung ins Dezimalsystem}
+	Umwandlung einer Zahl x im System mit Basis b in eine Dezimalzahl unter Verwendung der Polynomfunktion P(b):
+	\begin{displaymath}
+	P(b) = \sum_{\mathrm{i}=0}^{n} a_\mathit{i} b^\mathit{i}
+	\end{displaymath}		
+	Die Formel ist eine Kurzschreibweise f"ur eine Kette von Additionen:
+	\begin{displaymath}
+	P(b)= \underbrace{a_i b^i}_\text{i=0} + \underbrace{a_i b^i}_\text{i=1} + \underbrace{a_i b^i}_\text{i=2} + \dots + \underbrace{a_i b^i}_\text{i=(n-1)}
+	\end{displaymath}	
+	Der \textbf{Endwert \textit{n}} definitert wie oft das Addieren wiederholt werden soll - Ergo \textit{n} bestimmt die Anzahl der Terme.\\
+	Die \textbf{Laufvariable \textit{i}} startet bei 0, steigt bei jedem Term um 1, somit ist das letzte {\it i = (n - 1)}.	
+}
+
+\frame 
+{
+	\frametitle{Zahlensysteme - Umwandlung ins Dezimalsystem}
+	
+		
+	Bei einer Zahl mit einer Basis \textit{b} und \textit{n} Ziffern werden die Ziffern von \textit{$a_0$} bis \textit{$a_{n-1}$} durchnummeriert (von rechts nach links):
+	\begin{displaymath}	
+	\overbrace{\underbrace{a_3}_\text{Ziffer 3} \underbrace{a_2}_\text{Ziffer 2} \underbrace{a_1}_\text{Ziffer 1} \underbrace{a_0}_\text{Ziffer 0}}^\text{Anz. Ziffern (n=4)}
+	\end{displaymath}		 
+	
+	Die Polynomfunktion P(b) enth"alt s"amtliche Ziffern {\it $a_0$} bis {\it $a_{3}$} als Koeffizienten:
+	\begin{displaymath}
+	P(b)= a_0 \cdot b^0+ a_1 \cdot b^1 + a_2 \cdot b^2 + a_3 \cdot b^3
+	\end{displaymath}		
+}
+
 \frame
 {
 	\frametitle{Zahlensysteme - Umwandlung ins Dezimalsystem}
-	Umwandlung einer Zahl x im System mit Basis b in eine Dezimalzahl.\\
-	Beispiel Zahl x: $\underbrace{1}_\text{Ziffer 3} \underbrace{2}_\text{Ziffer 2} \underbrace{3}_\text{Ziffer 1} \underbrace{4}_\text{Ziffer 0}$\\
-	\vspace{3mm}
+	Herleiten des Polynoms bei einer Zahl \textit{x} mit Basis \textit{b=8} und \textit{n=4} Ziffern: 
+	\begin{displaymath}	
+	x = \overbrace{\underbrace{1}_\text{$a_3$} \underbrace{6}_\text{$a_2$} \underbrace{2}_\text{$a_1$} \underbrace{4}_\text{$a_0$}}^\text{Anz. Ziffern (n=4)}
+	\end{displaymath}			
+	\vspace{1mm}
+	\begin{displaymath}
+	P(8)= a_0 \cdot 8^0+ a_1 \cdot 8^1 + a_2 \cdot 8^2 + a_3 \cdot 8^3
+	\end{displaymath}	
+	\vspace{1mm}
 	\begin{displaymath}
 	\begin{array}{ll}
 	Dezimalzahl = \\
-	Ziffer \, n \cdot (b)^n \\
-	+ \dots \\
-	+ Ziffer \, 2 \cdot (b)^2 \\
-	+ Ziffer \, 1 \cdot (b)^1 \\
-	+ Ziffer \, 0 \cdot (b)^0
+	\;\;\;\: 4 \cdot 8^0 \\
+	+\; 2 \cdot 8^1 \\
+	+\; 6 \cdot 8^2 \\
+	+\; 1 \cdot 8^3
 	\end{array}
 	\end{displaymath}
 }
@@ -305,8 +342,9 @@
 \frame
 {
 	\frametitle{Zahlensysteme - "Ubungstool}
-	"Ubungstool zur Umwandlung von Zahlen in verschiedenen Zahlensystemen. Steht auf dem OLAT System zur Verf"ugung.\\
-	\includegraphics[width=150pt]{zahlensysteme.ps}
+	"Ubungstool zur Umwandlung von Zahlen in verschiedenen Zahlensystemen. Steht auf der OwnCloud \href{url}{https://share.hf-ict.ch/} zur Verf"ugung.\\
+	\includegraphics[width=150pt]{zahlensysteme.eps}
+	%\includegraphics[width=150pt]{zahlensysteme.jpg}
 }
 
 \frame
@@ -411,7 +449,28 @@
 	Der ASCII Code ist eine 7 Bit Zeichencodierung. Er ordnet bekannten Zeichen
 	einen Code zu. Es existieren 128 Zeichen. Um mehr Zeichen codieren zu k"onnen,
 	wird heute der Unicode verwendet.\\
-	\includegraphics[width=240pt]{ascii.ps}
+	\includegraphics[width=240pt]{ascii.eps}
+}
+
+\frame
+{
+	\frametitle{ASCII Code}
+	Mit den Bits $b_7$ bis $b_5$ lassen sich Gruppen bilden:\\
+	\includegraphics[width=175pt]{USASCII_code_chart.png}
+	\begin{itemize}
+  		\item Gruppe 000 und 001 = Steuerzeichen
+  		\item Gruppe 010 = Satzzeichen, etc. (printable)
+  		\item Gruppe 011 = Numerische Ziffern 0..9, etc. (printable)
+  		\item Gruppe 100 und 101 = Grossbuchstaben, etc. (printable)
+  		\item Gruppe 110 und 111 = Kleinbuchstaben,  etc. (printable)
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{ASCII Code}
+	Typische 8-bit ASCII Tabelle wie diese unter MS-DOS erscheint (inkl. Latin1 Zeichen wie "a, "o, "u, \`a, \'a etc.):
+	\includegraphics[width=300pt]{Table_ascii_extended_Cygwin_App_ascii.png}
 
 }
 
