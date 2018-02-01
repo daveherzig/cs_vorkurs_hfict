@@ -1,0 +1,82 @@
+\documentclass[a4paper,10pt]{article}
+\topmargin-1cm
+\addtolength{\textheight}{2.5cm}
+\addtolength{\textwidth}{2cm}
+\usepackage{times}
+
+\usepackage{verbatim}
+\usepackage[dvips]{graphicx}
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
+
+\setlength{\parindent}{0cm}
+
+\title{Latex Template}
+\author{David Herzig}
+\date{WS2003}
+
+\begin{document}
+
+KTSI - Kantonale Technikerschule f"ur Informatik\\
+CH 4132 Muttenz\\
+D.Herzig
+
+\vspace{2mm}
+
+\begin{center}
+{\Large \bf Vorkurs Informatik}\\
+Exercise sheet 5
+\end{center}
+
+\vspace{2mm}
+
+\line(1,0){400}
+
+\vspace{5mm}
+
+\section{Umlaufzeit eines Satelliten}
+F"ur die Berechnung der Umlaufzeit eines Satelliten auf der Kreisbahn um die
+Erde kann die folgende Formel verwendet werden:
+
+\begin{displaymath}
+T[sec] = \frac{2 \cdot \pi}{R_{E}} \cdot \sqrt{\frac{(R_{E}+h)^{3}}{g}}
+\end{displaymath}
+
+$g$ ist die Erdbeschleunigung: $g = 9.80665 m/s^{2}$\\
+$R_{E}$ ist der Erdradius: $R_{E} = 6371 km$\\
+$\pi = 3.14159$\\
+
+Schreiben Sie ein Programm, das die H"ohe h des Satelliten einliest und dessen
+Umlaufzeit ausgibt.\\
+Wie hoch muss ein Satellit sein, damit er geostation"ar (Umlaufzeit = 24h) ist?
+
+
+\section{Freier Fall}
+Beim freien Fall befindet sich ein K"orper zun"achst in Ruhe und bewegt sich
+unter dem Einfluss der Erdanziehung aus einer bestimmten H"ohe $h_0$ nach unten. Die
+Dauer eines Falles kann mit der folgenden Formel berechnet werden:
+
+\begin{displaymath}
+T = \sqrt{\frac{2h_0}{g}}
+\end{displaymath}
+
+\emph{g} ist die Erdbeschleuningungskonstante. Ihr Wert betr"agt:\\
+$g=9.807$\\
+\\
+Schreiben Sie ein Programm, das die H"ohe $h_0$ einliest und den Wert der
+Dauer des Falles ausgibt.
+
+
+\section{Elektrische Feldst"arke in einem Plattenkondensator}
+Wird ein Plattenkondensator mit dem Plattenabstand d auf die Spannung U aufgeladen, so besitzt das Kondensatorfeld eine elektrische Feldst"arke vom Betrag
+
+\begin{displaymath}
+E = \frac{U}{d}
+\end{displaymath}
+
+Schreiben Sie ein Programm, das die Spannung $U$ und den Plattenabstand d einliest und die St"arke des elektrischen Feldes ausgibt.
+
+
+
+\end{document}
+

@@ -1,0 +1,4 @@
+Fach   Anzahl Kugeln
+0      4
+1      15
+...    ...

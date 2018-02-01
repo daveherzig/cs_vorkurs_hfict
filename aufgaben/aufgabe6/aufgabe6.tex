@@ -1,0 +1,64 @@
+\documentclass[a4paper,10pt]{article}
+\topmargin-1cm
+\addtolength{\textheight}{2.5cm}
+\addtolength{\textwidth}{2cm}
+\usepackage{times}
+
+\usepackage{verbatim}
+\usepackage[dvips]{graphicx}
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
+
+\setlength{\parindent}{0cm}
+
+\title{Latex Template}
+\author{David Herzig}
+\date{WS2003}
+
+\begin{document}
+
+HF-ICT - H"ohere Fachschule f"ur Informations- und Kommunikationstechnologie\\
+CH 4132 Muttenz\\
+D.Herzig
+
+\vspace{2mm}
+
+\begin{center}
+{\Large \bf Vorkurs Informatik}\\
+Exercise sheet 6
+\end{center}
+
+\vspace{2mm}
+
+\line(1,0){400}
+
+\vspace{5mm}
+
+\section{Schaltjahr}
+Schreiben Sie ein Programm, welches ein Jahr einliest und dann bestimmt, ob dieses
+Jahr ein Schaltjahr ist oder nicht.\\
+Um zu pr"ufen ob ein Jahr ein Schaltjahr ist, wird folgende Regel verwendet:
+\begin{itemize}
+\item Ist das eingegebene Jahr J ein Jahrhundertjahr (1900, 2000, 2100, ...), dann ist J genau dann ein Schaltjahr,
+wenn es ohne Rest durch 400 teilbar ist.
+\item Ist das eingegebene Jahr J kein Jahrhunderjahr, dann ist J genau dann ein Schaltjahr, wenn es ohne Rest
+durch 4 teilbar ist.
+\end{itemize}
+
+\section{Detailh"andler}
+Ein Detailh"andler gibt immer \verb|5%| Rabatt, wenn von einem bestimmten Produkt mindestens 10 St"uck gekauft
+werden. Ab 100 St"uck wird sogar \verb|8%| Rabatt gegeben.\\
+Schreiben Sie ein Programm, welches den St"uckpreis und die Menge einliest. Danach wird der Gesamtpreis berechnet
+und ausgegeben.
+
+\section{Taschenrechner}
+Schreiben Sie ein Programm, welches 2 Zahlen sowie ein Operator (+, -, *, /) einliest und diese Rechnung dann ausf"uhrt.
+Das Resultat wird dann auf der Konsole ausgegeben.\\
+
+\verb|Zahl 1: 43|\\
+\verb|Zahl 2: 8|\\
+\verb|Operator: +|\\
+\verb|Resultat: 51|
+
+\end{document}
+

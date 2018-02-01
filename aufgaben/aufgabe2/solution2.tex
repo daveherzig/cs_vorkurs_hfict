@@ -1,0 +1,85 @@
+\documentclass[a4paper,10pt]{article}
+\topmargin-1cm
+\addtolength{\textheight}{2.5cm}
+\addtolength{\textwidth}{2cm}
+\usepackage{times}
+
+\usepackage{verbatim}
+\usepackage[dvips]{graphicx}
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
+
+\setlength{\parindent}{0cm}
+
+\title{Latex Template}
+\author{David Herzig}
+\date{WS2004}
+
+\begin{document}
+
+KTSI - Kantonale Technikerschule f"ur Informatik\\
+CH 4132 Muttenz\\
+D.Herzig
+
+\vspace{2mm}
+
+\begin{center}
+{\Large \bf Vorkurs Informatik}\\
+Exercise sheet 2 - Musterl"osung
+\end{center}
+
+\vspace{2mm}
+
+\line(1,0){400}
+
+\vspace{5mm}
+
+\section{Gr"ossen der Informatik}
+
+\begin{enumerate}
+
+\item Ein Bildschirm hat eine Aufl"osung von 1024x768 Pixel. Jeder Pixel kann eine aus 256 verschiedenen Farben darstellen. Wie viel Speicher wird f"ur die Darstellung des ganzen Bildschirms ben"otigt?\\
+Um 256 Farben zu speichern, werden 8 Bits ben"otigt. Das heisst, jeder Pixel hat 1 Byte (1 Byte = 8 Bit).\\
+Der Bildschirm besitzt somit $1024 \cdot 768 \cdot 1 Byte = \underline{768kBytes}$
+
+\item Wieviele Bytes werden ben"otigt, um die hexadezimale Zahl ABCD zu speichern?\\
+Wird man die Zahl ABCD in das bin"are System umgewandelt, so entsteht 1010101111001101. Dies sind $\underline{16 Bits = 2 Bytes}$.
+
+\item Ein Verlag m"ochte gerne ein bestimmtes Buch in elektronischer Form vertreiben. Das Buch besitzt im gesamten 768 Seiten und hat auf einer Seite minimal 1024 Zeichen und maximal 2048 Zeichen. F"ur die Speicherung eines Zeichens werden 2 Bytes ben"otigt.
+
+\begin{itemize}
+\item Wie viel Speicherplatz ben"otigt dieses Buch im Minimum?\\
+$768 \cdot 1024 \cdot 2 = \underline{1.5MBytes}$
+\item Wie lange dauert es im Maximum, das Buch "uber eine Datenleitung mit einer Geschwindigkeit von 16 kBytes pro Sekunde zu "ubertragen?\\
+$\frac{768 \cdot 2048 \cdot 2}{16 \cdot 1024} = \underline{192s}$
+\end{itemize}
+
+\end{enumerate}
+
+\section{ASCII Code}
+\begin{enumerate}
+
+\item "Ubersetzen Sie den folgenden ASCII Text.\\
+\verb|41 4C 4C 45 53 20 4B 4C 41 52 3F|\\
+ALLES KLAR?
+
+\item Wie lautet der Bin"arcode des Buchstaben X?\\
+1011000
+
+\item "Ubersetzen Sie den folgenden ASCII Text.\\
+\verb|1000011 1001100 1000001 1001001 1010010 1000101|\\
+CLAIRE
+
+\end{enumerate}
+
+\section{Menschliches Auge}
+Das Sichtfeld eines menschlichen Auges besteht aus $10^6$ Pixeln.
+Jeder Pixel besteht aus je einen Wert für Rot, Gr"un und Blau,
+wobei jeder Wert eine von 64 Helligkeitsstufen aufweist. Die zeitliche
+Aufl"osung beträgt 100ms. Berechnen Sie die Speichergr"osse eines Bildes,
+welches das Auge erfassen kann, sowie die Datenrate des Auges.\\
+Speichergr"osse eines Bildes: $10^6 \cdot 3 \cdot 6 = \underline{2.15 MBytes}$\\
+Datenrate: $2.15 MBytes / 100 ms = \underline{21.5 MBytes / s}$
+
+\end{document}
+

@@ -1,0 +1,77 @@
+\documentclass[a4paper,10pt]{article}
+\topmargin-1cm
+\addtolength{\textheight}{2.5cm}
+\addtolength{\textwidth}{2cm}
+\usepackage{times}
+
+\usepackage{verbatim}
+\usepackage[dvips]{graphicx}
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
+
+\setlength{\parindent}{0cm}
+
+\title{Latex Template}
+\author{David Herzig}
+\date{WS2003}
+
+\begin{document}
+
+HF-ICT - H"ohere Fachschule f"ur Informations- und Kommunikationstechnologie\\
+CH 4132 Muttenz\\
+D.Herzig
+
+\vspace{2mm}
+
+\begin{center}
+{\Large \bf Vorkurs Informatik}\\
+Exercise sheet 7
+\end{center}
+
+\vspace{2mm}
+
+\line(1,0){400}
+
+\vspace{5mm}
+
+\section{Kleinste Zahl}
+Schreiben Sie ein Programm, welches 10 Zahlen einliest und die kleinste dieser 10 Zahlen wieder ausgibt.
+
+\section{Gr"osster gemeinsamer Teiler}
+Erstellen Sie ein Programm, welches 2 nat"urliche Zahlen einliest und den ggt dieser beiden Zahlen berechnet.\\
+Zur Berechnung kann der folgende Algorithmus verwendet werden:\\
+Die kleiner Zahl der beiden Zahlen wird von der gr"osseren Zahl subtrahiert. Dies wird solange gemacht,
+bis beide Zahlen gleich sind. Dies ist dann der ggt der beiden urspr"unglichen Zahlen.
+
+\vspace{3mm}
+Beispiel\\
+a = 30, b = 54
+
+\vspace{3mm}
+b = 54 - 30 (Gr"ossere Zahl minus kleinere Zahl)\\
+a = 30, b = 24\\
+a = 30 - 24 (Gr"ossere Zahl minus kleinere Zahl)\\
+a = 6, b = 24\\
+b = 24 - 6 (Gr"ossere Zahl minus kleinere Zahl)\\
+a = 6, b = 18\\
+b = 18 - 6 (Gr"ossere Zahl minus kleinere Zahl)\\
+a = 6, b = 12\\
+b = 12 - 6 (Gr"ossere Zahl minus kleinere Zahl)\\
+a = 6, b = 6\\
+Beide Zahlen sind nun gleich. Der ggt von 30 und 54 ist 6.
+
+\section{Primzahlen}
+Schreiben Sie ein Programm, welches Primzahlen berechnet. Das Programm soll in einer endlos Schleife laufen
+und nacheinander Primzahlen ausgeben.
+
+\vspace{5mm}
+2\\
+3\\
+5\\
+7\\
+11\\
+13\\
+...
+
+\end{document}
+

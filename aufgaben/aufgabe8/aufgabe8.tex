@@ -1,0 +1,64 @@
+\documentclass[a4paper,10pt]{article}
+\topmargin-1cm
+\addtolength{\textheight}{2.5cm}
+\addtolength{\textwidth}{2cm}
+\usepackage{times}
+
+\usepackage{verbatim}
+\usepackage[dvips]{graphicx}
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
+
+\setlength{\parindent}{0cm}
+
+\title{Latex Template}
+\author{David Herzig}
+\date{WS2003}
+
+\begin{document}
+
+HF-ICT - H"ohere Fachschule f"ur Informations- und Kommunikationstechnologie\\
+CH 4132 Muttenz\\
+D.Herzig
+
+\vspace{2mm}
+
+\begin{center}
+{\Large \bf Vorkurs Informatik}\\
+Exercise sheet 8
+\end{center}
+
+\vspace{2mm}
+
+\line(1,0){400}
+
+\vspace{5mm}
+
+\section{Dreieck}
+Schreiben Sie ein Programm zur Ausgabe eines Dreiecks auf der Konsole. Zuerst wird die Anzahl Reihen eingelesen.
+
+\vspace{5mm}
+
+\verb|Anzahl Reihen: 6|\\
+\verb|*|\\
+\verb|**|\\
+\verb|***|\\
+\verb|****|\\
+\verb|*****|\\
+\verb|******|\\
+
+\section{Roulette}
+Schreiben Sie ein Programm zur Simulation eines Casino Besuches.
+
+\vspace{3mm}
+
+Der Besucher geht mit einem bestimmten Betrag \verb|m| (z.b. CHF 5000) ins Casino und spielt Roulette (beim Roulette gibt es die Zahlen 0-36).
+Der Besucher setzt immer einen fixen Betrag (Einsatz) \verb|n| (z.b. CHF 20) auf eine gerade Zahl. D.h. wenn eine 0 oder eine ungerade Zahl
+kommt verliert der Besucher sein Einsatz, falls eine gerade Zahl kommt, so gewinnt er den Einsatz.\\
+Schreiben Sie ein Programm, welches die Werte \verb|m| und \verb|n| einliest. Danach wird das Roulette Spiel solange simuliert,
+bis der Besucher etweder kein Geld mehr hat, oder seinen Einsatz \verb|m| verdoppelt hat. Geben Sie aus, an wievielen Roulette Spielen
+der Besucher teilgenommen hat (z.b. Der Besucher hat den Betrag von CHF 10000 innerhalb von 105 Spielen verloren).
+
+
+\end{document}
+

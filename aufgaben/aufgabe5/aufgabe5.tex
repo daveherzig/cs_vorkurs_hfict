@@ -1,0 +1,82 @@
+\documentclass[a4paper,10pt]{article}
+\topmargin-1cm
+\addtolength{\textheight}{2.5cm}
+\addtolength{\textwidth}{2cm}
+\usepackage{times}
+
+\usepackage{verbatim}
+\usepackage[dvips]{graphicx}
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
+
+\setlength{\parindent}{0cm}
+
+\title{Latex Template}
+\author{David Herzig}
+\date{WS2003}
+
+\begin{document}
+
+HF-ICT - H"ohere Fachschule f"ur Informations- und Kommunikationstechnologie\\
+CH 4132 Muttenz\\
+D.Herzig
+
+\vspace{2mm}
+
+\begin{center}
+{\Large \bf Vorkurs Informatik}\\
+Exercise sheet 5
+\end{center}
+
+\vspace{2mm}
+
+\line(1,0){400}
+
+\vspace{5mm}
+
+\section{Umlaufzeit eines Satelliten}
+F"ur die Berechnung der Umlaufzeit eines Satelliten auf der Kreisbahn um die
+Erde kann die folgende Formel verwendet werden:
+
+\begin{displaymath}
+T[sec] = \frac{2 \cdot \pi}{R_{E}} \cdot \sqrt{\frac{(R_{E}+h)^{3}}{g}}
+\end{displaymath}
+
+$g$ ist die Erdbeschleunigung: $g = 9.80665 m/s^{2}$\\
+$R_{E}$ ist der Erdradius: $R_{E} = 6371 km$\\
+$\pi = 3.14159$\\
+
+Schreiben Sie ein Programm, das die H"ohe h des Satelliten einliest und dessen
+Umlaufzeit ausgibt.\\
+Wie hoch muss ein Satellit sein, damit er geostation"ar (Umlaufzeit = 24h) ist?
+
+
+\section{Freier Fall}
+Beim freien Fall befindet sich ein K"orper zun"achst in Ruhe und bewegt sich
+unter dem Einfluss der Erdanziehung aus einer bestimmten H"ohe $h_0$ nach unten. Die
+Dauer eines Falles kann mit der folgenden Formel berechnet werden:
+
+\begin{displaymath}
+T [sec] = \sqrt{\frac{2h_0}{g}}
+\end{displaymath}
+
+\emph{g} ist die Erdbeschleuningungskonstante. Ihr Wert betr"agt:\\
+$g=9.80665$\\
+\\
+Schreiben Sie ein Programm, das die H"ohe $h_0$ einliest und den Wert der
+Dauer des Falles ausgibt.
+
+
+\section{Gleichf"ormige Bewegung}
+Mit einer neuen Radaranlage misst die Polizei die Dauer, welche ein Fahrzeug f"ur eine bestimmte
+Strecke ben"otigt. Daraus kann die Geschwindigkeit mit der folgenden Formel berechnet werden:
+
+\begin{displaymath}
+v [m/s] = \frac{s[m]}{t[s]}
+\end{displaymath}
+
+Schreiben Sie ein Programm, welches die Strecke sowie die Zeit einliest. Danach wird die Geschwindigkeit
+berechnet und ausgegeben.
+
+\end{document}
+
