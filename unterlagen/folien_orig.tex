@@ -1,0 +1,2033 @@
+\documentclass{beamer}
+
+\usepackage{times}
+
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{listings}
+
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
+
+\usepackage{multicol}
+
+\usepackage{beamerthemesplit}
+\usetheme{Malmoe}
+
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{resize to}[a4paper,landscape]
+
+\definecolor{lbcolor}{rgb}{0.92,0.92,0.92}
+\definecolor{cmtcolor}{rgb}{0.0,0.5,0.0}
+\lstset{numbers=left,
+        numberstyle=\tiny,
+        keywordstyle=\color{blue}\bfseries\sffamily,
+        identifierstyle=\ttfamily,
+        commentstyle=\em,
+        stringstyle=\ttfamily,
+        extendedchars=true,
+        showstringspaces=false,
+        language=c++,
+        backgroundcolor=\color{lbcolor},
+        commentstyle=\color{cmtcolor}}
+
+\title{HF-ICT Informatik Vorkurs}
+\author{David Herzig (dave.herzig@gmail.com)}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\setcounter{tocdepth}{1}
+
+\frame
+{
+	\frametitle{Inhalt}
+	\begin{itemize}
+	\item Theoretical, Practical, Technological, ...
+	\item Grundlagen Informatik (Zahlensysteme, Gr"ossen, ...)
+	\item Einf"uhrung C++
+	\item Vorbereitung Aufnahmepr"ufung
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{Inhalt}
+	Unterlagen
+	\begin{itemize}
+	\item Unterricht: Folien und Aufgaben
+	\item Buch: C++ f"ur Spieleprogrammierer, (ISBN 13: 978-3446421400)
+	\item Internet: http://www.mingw.org (C++ Compiler)
+	\item Editor: http://notepad-plus-plus.org/
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{Inhalt}
+	Aufgaben / "Ubungen
+	\begin{itemize}
+	\item "Ubungen sind sehr wichtig !!!
+	\item "Ubungen w"ahrend dem Unterricht
+	\item Pro Woche ein Aufgabenblatt
+	\item Aktive Teilnahme bei Besprechung der "Ubungen ist erw"unscht
+	\end{itemize}
+}
+
+\section{Grundlagen Informatik}
+\frame
+{
+	\frametitle{Grundlagen Informatik}
+	\begin{itemize}
+	\item Zahlensysteme
+	\item Gr"ossen der Informatik
+	\item ASCII Code
+	\item Logik
+	\item Aufbau eines Computers
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{Zahlensysteme}
+	{\small Bei dem Begriff Zahlensystem handelt es sich um ein Verfahren zur Darstellung von Zahlen,
+	das auf einer mathematischen Basis aufbaut. Dabei handelt es sich in der Regel um eine
+	nat"urliche Zahl mit der Eigenschaft gr"osser oder gleich 2. Eine Zahl wird durch
+	Aneinanderreihung der einzelnen Ziffernzeichen gebildet, wobei die Anzahl der verschiedenen
+	Ziffernzeichen mit der Basis identisch ist. Beim Dezimalsystem, einem Zahlensystem mit der
+	Basis 10 gibt es demnach 10 Ziffernzeichen.}
+	
+	\begin{itemize}
+	\item Umwandlung vom Dezimalsystem
+	\item Umwandlung ins Dezimalsystem
+	\item Umwandlung Bin"ar - Hexadezimal
+	\end{itemize}
+}
+
+\frame
+{
+	\frametitle{Zahlensysteme - Tabelle}
+	{\tiny
+	\begin{tabular}{c|c|c|c}
+	Dezimalsystem & Bin"arsystem & Oktalsystem & Hexadezimalsystem \\
+	\hline
+	0 & 0 & 0 & 0 \\
+	1 & 1 & 1 & 1 \\
+	2 & 10 & 2 & 2 \\
+	3 & 11 & 3 & 3 \\
+	4 & 100 & 4 & 4 \\
+	5 & 101 & 5 & 5 \\
+	6 & 110 & 6 & 6 \\
+	7 & 111 & 7 & 7 \\
+	8 & 1000 & 10 & 8 \\
+	9 & 1001 & 11 & 9 \\
+	10 & 1010 & 12 & A \\
+	11 & 1011 & 13 & B \\
+	12 & 1100 & 14 & C \\
+	13 & 1101 & 15 & D \\
+	14 & 1110 & 16 & E \\
+	15 & 1111 & 17 & F \\
+	16 & 10000 & 20 & 10 \\
+	17 & 10001 & 21 & 11 \\
+	\end{tabular}
+	}
+}
+
+\frame
+{
+	\frametitle{Zahlensysteme - Umwandlung vom Dezimalsystem}
+	Umwandlung einer Zahl x vom Dezimalsystem in ein System mit Basis b.\\
+	\vspace{3mm}
+	\begin{displaymath}
+	\begin{array}{ll}
+	x : b = a_0 \quad REST \quad b_0 \\
+	a_0 : b = a_1 \quad REST \quad b_1 \\
+	a_1 : b = a_2 \quad REST \quad b_2 \\
+	\vdots \\
+	a_{n-1} : b = 0 \quad REST \quad b_n
+	\end{array}
+	\end{displaymath}
+	\vspace{3mm}
+	L"osung: $b_n \dots b_2 b_1 b_0$	
+}
+
+\frame
+{
+	\frametitle{Zahlensysteme - Beispiel}
+	$101_{10} \Rightarrow ?_2$\\
+	\vspace{3mm}
+	\begin{displaymath}
+	\begin{array}{ll}
+	101 : 2 = 50 \quad REST \quad 1 \\
+	50 : 2 = 25 \quad REST \quad 0 \\
+	25 : 2 = 12 \quad REST \quad 1 \\
+	12 : 2 = 6 \quad REST \quad 0 \\
+	6: 2 = 3 \quad REST \quad 0 \\
+	3 : 2 = 1 \quad REST \quad 1 \\
+	1 : 2 = 0 \quad REST \quad 1
+	\end{array}
+	\end{displaymath}
+	\vspace{3mm}
+	L"osung: $1100101$
+}
+
+\frame
+{
+	\frametitle{"Ubungen}
+	\begin{enumerate}
+	\item $53_{10} \Rightarrow ?_2$
+	\item $1023_{10} \Rightarrow ?_{16}$
+	\item $452_{10} \Rightarrow ?_8$
+	\item $66_{10} \Rightarrow ?_2$
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{"Ubungen - L"osungen}
+	\begin{enumerate}
+	\item $53_{10} \Rightarrow 110101_2$
+	\item $1025_{10} \Rightarrow 3FF_{16}$
+	\item $452_{10} \Rightarrow 704_8$
+	\item $66_{10} \Rightarrow 1000010_2$
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{Zahlensysteme - Umwandlung ins Dezimalsystem}
+	Umwandlung einer Zahl x im System mit Basis b in eine Dezimalzahl.\\
+	Beispiel Zahl x: $\underbrace{1}_\text{Ziffer 3} \underbrace{2}_\text{Ziffer 2} \underbrace{3}_\text{Ziffer 1} \underbrace{4}_\text{Ziffer 0}$\\
+	\vspace{3mm}
+	\begin{displaymath}
+	\begin{array}{ll}
+	Dezimalzahl = \\
+	Ziffer \, n \cdot (b)^n \\
+	+ \dots \\
+	+ Ziffer \, 2 \cdot (b)^2 \\
+	+ Ziffer \, 1 \cdot (b)^1 \\
+	+ Ziffer \, 0 \cdot (b)^0
+	\end{array}
+	\end{displaymath}
+}
+
+\frame
+{
+	\frametitle{Zahlensysteme - Beispiel}
+	$1101110_{2} \Rightarrow ?_{10}$\\
+	\vspace{3mm}
+	$\overbrace{1}^\text{6} \overbrace{1}^\text{5} \overbrace{0}^\text{4} \overbrace{1}^\text{3} \overbrace{1}^\text{2} \overbrace{1}^\text{1} \overbrace{0}^\text{0}$
+	\vspace{3mm}
+	\begin{displaymath}
+	1 \cdot 2^6 + 1 \cdot 2^5 + 0 \cdot 2^4 + 1 \cdot 2^3 + 1 \cdot 2^2 + 1 \cdot 2^1 + 0 \cdot 2^0 = 110
+	\end{displaymath}
+	\vspace{3mm}
+	L"osung: $110$
+}
+
+\frame
+{
+	\frametitle{Zahlensysteme - Beispiel}
+	$F5A_{16} \Rightarrow ?_{10}$\\
+	\vspace{3mm}
+	$\overbrace{F}^\text{2} \overbrace{5}^\text{1} \overbrace{A}^\text{0}$
+	\vspace{3mm}
+	\begin{displaymath}
+	15 \cdot 16^2 + 5 \cdot 16^1 + 10 \cdot 16^0 = 3930
+	\end{displaymath}
+	\vspace{3mm}
+	L"osung: $3930$
+}
+
+\frame
+{
+	\frametitle{"Ubungen}
+	\begin{enumerate}
+	\item $101110_{2} \Rightarrow ?_{10}$
+	\item $712_{8} \Rightarrow ?_{10}$
+	\item $AF5_{16} \Rightarrow ?_{10}$
+	\item $111000_{2} \Rightarrow ?_{10}$
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{"Ubungen - L"osungen}
+	\begin{enumerate}
+	\item $101110_{2} \Rightarrow ?46_{10}$
+	\item $712_{8} \Rightarrow 458_{10}$
+	\item $AF5_{16} \Rightarrow 2805_{10}$
+	\item $111000_{2} \Rightarrow 56_{10}$
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{Zahlensysteme - Umwandlung Bin"ar - Hexadezimal}
+	Direkte Umwandlung zwischen dem Bin"arsystem und dem Hexadezimalsystem.\\
+	Bei dieser Methode werden die Ziffern von rechts her in Gruppen mit
+	je 4 Ziffern aufgeteilt.\\
+	{\small
+	$1111001001101 \Rightarrow$ Einteilung in Gruppen $\Rightarrow 1 \quad 1110 \quad 0100 \quad 1101$
+	}\\
+	\vspace{3mm}
+	Nun wird jede Gruppe umgerechnet:\\
+	\vspace{3mm}
+	$\underbrace{1}_\text{1} \quad \underbrace{1110}_\text{E} \quad \underbrace{0100}_\text{4} \quad \underbrace{1101}_\text{D}$\\
+	\vspace{3mm}
+	Funktioniert auch in anderer Richtung, indem aus jeder hexadezimalen Ziffer vier bin"are Ziffern erstellt werden.
+}
+
+\frame
+{
+	\frametitle{"Ubungen}
+	\begin{enumerate}
+	\item $101110_{2} \Rightarrow ?_{16}$
+	\item $111011101110_{2} \Rightarrow ?_{16}$
+	\item $ABFD82_{16} \Rightarrow ?_{2}$
+	\item $12345_{16} \Rightarrow ?_{2}$
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{"Ubungen - L"osungen}
+	\begin{enumerate}
+	\item $101110_{2} \Rightarrow 2E_{16}$
+	\item $111011101110_{2} \Rightarrow EEE_{16}$
+	\item $2FA8_{16} \Rightarrow 101111110101000_{2}$
+	\item $12345_{16} \Rightarrow 10010001101000101_{2}$
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{Zahlensysteme - "Ubungstool}
+	"Ubungstool zur Umwandlung von Zahlen in verschiedenen Zahlensystemen. Steht auf dem OLAT System zur Verf"ugung.\\
+	\includegraphics[width=150pt]{zahlensysteme.ps}
+}
+
+\frame
+{
+	\frametitle{L"osung Aufgabenblatt 1}
+	Aufgabe 1
+	\begin{enumerate}
+	\item $1010110111_{2} = 695_{10}$
+	\item $25_{16} = 100101_{2}$
+	\item $2345_{8} = 1253_{10}$
+	\item $ABCD_{16} = 1010101111001101_{2}$
+	\item $1046_{10} = 416_{16}$
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{L"osung Aufgabenblatt 1}
+	Aufgabe 2
+	\begin{enumerate}
+	\item $12_{10} + ABC_{16} + 1001_{2} = 2769_{10}$
+	\item $10011101_{2} + 123_{10} = 118_{16}$
+	\item $11_{2} + 77_{8} + FF_{16} = 321_{10}$
+	\end{enumerate}
+}
+\frame
+{
+	\frametitle{L"osung Aufgabenblatt 1}
+	{\tiny
+	Aufgabe 3
+	\begin{enumerate}
+	\item Wieviele Zahlensysteme gibt es?\\
+	\emph{Unendlich viele}
+	\item Durch was kann ein Zahlensystem charakterisiert werden?\\
+	\emph{Basis, zur Verf"ugung stehende Ziffern, Stellenwert}
+	\item Wie k"onnte eine direkte Umwandlung vom Bin"arsystem ins Oktalsystem erfolgen?\\
+	\emph{Die bin"are Zahl wird in dreier Guppen aufgeteilt.}
+	\item Wieviele Stellen werden ben"otigt um eine Zahl Z mit Basis B darzustellen?\\
+	$\lfloor log_B(Z) + 1 \rfloor$
+	\item "Uberlegen Sie sich, wie man negative Zahlen im Bin"arsystem darstellen k"onnte.\\
+	\emph{Es wird ein Bit als Vorzeichen verwendet. Bsp: 1 bedeutet Negativ, 0 bedeutet Positiv.}
+	\item Wenn die Menschen mit Ihren Fingern bin"ar z"ahlen w"urden (Finger ausgestreckt = 1, Finger eingezogen = 0), wie hoch k"onnten wir dann z"ahlen?\\
+	\emph{Von 0 bis} $2^{10}-1 = 1023$
+	\end{enumerate}
+	}
+}
+
+\frame
+{
+	\begin{center}
+	\includegraphics[width=160pt]{binary-people.eps}
+	\end{center}
+}
+
+\frame
+{
+	\frametitle{Gr"ossen der Informatik}
+	{\small
+	\begin{itemize}
+	\item Bit (kleinste Einheit: 0 oder 1)
+	\item Nibble (4 Bit)
+	\item Byte (8 Bit)
+	\item 1 kByte ($2^{10}$ Bytes = 1024 Bytes)
+	\item 1 MByte (1024 kBytes, 1048576 Bytes)
+	\item 1 GByte (Giga)
+	\item 1 TByte (Tera)
+	\item 1 PByte (Peta)
+	\end{itemize}
+	Architekturabh"angig (32 Bit, 64 Bit Systeme)
+	\begin{itemize}
+	\item Halbwort (16 Bit, Architekturabh"angig)
+	\item Wort (32 Bit, Architekturabh"angig)
+	\item Doppelwort (64 Bit, Architekturabh"angig)
+	\end{itemize}
+	}
+}
+
+\frame
+{
+	\frametitle{"Ubungen}
+	\begin{enumerate}
+	\item Was ist die h"ochste Dezimalzahl, welche mit 6 Bits dargestellt werden kann?
+	\item Wieviele Bits sind notwendig um die Grossbuchstaben unseres lateinischen Alphabets darzustellen?
+	\item Eine Datei der Gr"osse 100 Megabyte soll von einem Computer auf den USB Stick
+	"ubertragen werden. Die "Ubertragungsrate betr"agt 480 MBit/s. Wie lange dauert der Kopiervorgang?
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{"Ubungen - L"osungen}
+	\begin{enumerate}
+	\item 6 Bit: $111111_2$ = $63_{10}$
+	\item 26 Buchstaben: 5 Bits (32 M"oglichkeiten)
+	\item 480 MBit/s = 60 MByte / s. $\frac{100 MByte}{60 MByte/s} = 1.67s$
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{ASCII Code}
+	Der ASCII Code ist eine 7 Bit Zeichencodierung. Er ordnet bekannten Zeichen
+	einen Code zu. Es existieren 128 Zeichen. Um mehr Zeichen codieren zu k"onnen,
+	wird heute der Unicode verwendet.\\
+	\includegraphics[width=240pt]{ascii.ps}
+
+}
+
+\frame
+{
+	\frametitle{ASCII Code - Beispiel}
+	PULP FICTION\\
+	\vspace{3mm}
+	Hexadezimal:\\
+	50 55 4C 50 20 46 49 43 54 49 4F 4E\\
+	\vspace{3mm}
+	Dezimal:\\
+	80 85 76 80 32 70 73 67 84 73 79 78\\
+	\vspace{3mm}
+	Bin"ar:\\
+	{\tiny 101000 101101 1001100 1010000 100000 100110  1001001 1000011 1010100 1001001 1001111 1001110}\\
+}
+
+\frame
+{
+	\frametitle{"Ubungen}
+	\begin{enumerate}
+	\item Ein Zeichen hat den Bin"arcode 1111010. Welches Zeichen ist gemeint?
+	\item Dekodieren Sie:\\
+	{\tiny 010100110100001101001000010101010100110001000101}
+	\item Codieren Sie das Wort \emph{Computer} (Hex-Format)
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{"Ubungen - L"osungen}
+	\begin{enumerate}
+	\item Ein Zeichen hat den Bin"arcode 01111010. Welches Zeichen ist gemeint?\\
+	z
+	\item Dekodieren Sie:\\
+	{\tiny 010100110100001101001000010101010100110001000101}\\
+	SCHULE
+	\item Computer: 43 6F 6D 70 75 74 65 72
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{L"osung Aufgabenblatt 2}
+	Aufgabe 1
+	{\tiny
+	\begin{enumerate}
+
+	\item Ein Bildschirm hat eine Aufl"osung von 1024x768 Pixel. Jeder Pixel kann eine
+	aus 256 verschiedenen Farben darstellen. Wie viel Speicher wird f"ur die Darstellung
+	des ganzen Bildschirms ben"otigt?\\
+	Um 256 Farben zu speichern, werden 8 Bits ben"otigt. Das heisst, jeder Pixel hat 1 Byte (1 Byte = 8 Bit).\\
+	Der Bildschirm besitzt somit $1024 \cdot 768 \cdot 1 Byte = \underline{768kBytes}$
+	
+	\item Wieviele Bytes werden ben"otigt, um die hexadezimale Zahl ABCD zu speichern?\\
+	Wird man die Zahl ABCD in das bin"are System umgewandelt, so entsteht 1010101111001101.
+	Dies sind $\underline{16 Bits = 2 Bytes}$.
+
+	\item Ein Verlag m"ochte gerne ein bestimmtes Buch in elektronischer Form vertreiben.
+	Das Buch besitzt im gesamten 768 Seiten und hat auf einer Seite minimal
+	1024 Zeichen und maximal 2048 Zeichen. F"ur die Speicherung eines Zeichens werden 2 Bytes ben"otigt.
+
+	\begin{itemize}
+	{\tiny
+	\item Wie viel Speicherplatz ben"otigt dieses Buch im Minimum?\\
+	$768 \cdot 1024 \cdot 2 = \underline{1.5MBytes}$
+	\item Wie lange dauert es im Maximum, das Buch "uber eine Datenleitung mit einer Geschwindigkeit
+	von 16 kBytes pro Sekunde zu "ubertragen?\\
+	$\frac{768 \cdot 2048 \cdot 2}{16 \cdot 1024} = \underline{192s}$
+	}
+	\end{itemize}
+
+	\end{enumerate}
+	}
+}
+
+\frame
+{
+	\frametitle{L"osung Aufgabenblatt 2}
+	Aufgabe 2
+	\begin{enumerate}
+	\item "Ubersetzen Sie den folgenden ASCII Text.\\
+	41 4C 4C 45 53 20 4B 4C 41 52 3F\\
+	ALLES KLAR?
+	\item Wie lautet der Bin"arcode des Buchstaben X?\\
+	01011000
+	\item "Ubersetzen Sie den folgenden ASCII Text.\\
+	01000011 01001100 01000001 01001001 01010010 01000101\\
+	CLAIRE
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{L"osung Aufgabenblatt 2}
+	Aufgabe 3\\
+	Das Sichtfeld eines menschlichen Auges besteht aus $10^6$ Pixeln.
+	Jeder Pixel besteht aus je einen Wert f"ur Rot, Gr"un und Blau,
+	wobei jeder Wert eine von 64 Helligkeitsstufen aufweist. Die zeitliche
+	Aufl"osung betr"agt 100ms. Berechnen Sie die Speichergr"osse eines Bildes,
+	welches das Auge erfassen kann, sowie die Datenrate des Auges.\\
+	\vspace{4mm}
+	Speichergr"osse eines Bildes: $10^6 \cdot 3 \cdot 6 = \underline{2.15 MBytes}$\\
+	Datenrate: $2.15 MBytes / 100 ms = \underline{21.5 MBytes / s}$
+}
+
+\frame
+{
+	\frametitle{L"osung Aufgabenblatt 2}
+	Aufgabe 4\\
+	{\small
+	Ein Bekannter von Ihnen hat ein Mobile Abo bei der Swisscom mit einem Datenvolumen von
+250MB. In seiner Freizeit schreibt er haupts"achlich What's App Nachrichten. Seine 
+Nachrichten sind im Durchschnitt 280 Zeichen lang, wobei jedes Zeichen 2 Bytes ben"otigt. Zus"atzlich wird f"ur jede Nachricht 64 Bytes zus"atzliche
+Information (zb. Nachricht gesendet, Nachricht empfangen, Nachricht gelesen)
+versendet.
+Wieviele Nachrichten kann er pro Monat schreiben, ohne sein Datenvolumen zu "uberschreiten?\\
+	}
+	\vspace{4mm}
+	Gr"osse einer Nachricht: $280 \cdot 2 Bytes = 560 Bytes$\\
+	Gr"osse einer Nachricht + zus"atzliche Information: $560 Bytes + 64 Bytes = 624 Bytes$\\
+	Anzahl Nachrichten: $\frac{250 \cdot 1024 \cdot 1024}{624} = \underline{420102}$
+}
+
+\frame
+{
+	\frametitle{Logik}
+	Grundbaustein der Logik ist die Aussage. Eine Aussage ist eine Behauptung die einen
+	Wahrheitswert besitzt. Sie ist entweder \emph{wahr} (1, true) oder \emph{falsch} (0, false).
+	\begin{itemize}
+	\item \textcolor{red}{Die Erde ist flach} 
+	\item \textcolor{red}{$1 < 0$}
+	\item \textcolor{red}{29 ist eine Primzahl}
+    \item \textcolor{blue}{Keine logische Aussage: Bier schmeckt gut}
+	\end{itemize}
+	\vspace{3mm}
+	Aussagen k"onnen abgek"urzt werden:\\
+	Die Erde ist flach $\Rightarrow P$\\
+	29 ist eine Primzahl $\Rightarrow R$
+}
+
+\frame
+{
+	\frametitle{"Ubungen}
+	Welche der folgenden Aussagen sind wahr, welche sind falsch?
+	\begin{enumerate}
+	\item Die Summe der Winkel ist bei allen Dreiecken gleich $180^\circ$.
+	\item Es exisiert eine ganze Zahl $x$, f"ur die gilt $x^2 = 2$.
+	\item Es existiert eine Primzahl, welche nicht ungerade ist.
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{"Ubungen - L"osungen}
+	Welche der folgenden Aussagen sind wahr, welche sind falsch?
+	\begin{enumerate}
+	\item Die Summe der Winkel ist bei allen Dreiecken gleich $180^\circ$.\\
+	\emph{WAHR}
+	\item Es exisiert eine ganze Zahl $x$, f"ur die gilt $x^2 = 2$.\\
+	\emph{FALSCH}
+	\item Es existiert eine Primzahl, welche nicht ungerade ist.\\
+	\emph{WAHR}. Die Zahl 2 ist eine Primzahl und sie ist gerade.
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{Logik - Operatoren}
+	Einzelne Aussagen k"onnen mit logischen Operatoren zu neuen Aussagen zusammengesetzt
+	werden. Es existieren die folgenden Operatoren:
+	\begin{itemize}
+	\item UND ($\land$, Konjunktion)
+	\item ODER ($\lor$, Disjunktion)
+	\item NICHT ($\lnot$, Negation)
+	\end{itemize}
+	\vspace{3mm}
+	Beispiele:\\
+	\begin{tabbing}
+	\hspace{2cm} \= \kill
+	$\lnot P$: \> Die Erde ist nicht flach\\
+	$P \lor R$: \> Die Erde ist flach oder 29 ist eine Primzahl
+	\end{tabbing}
+}
+
+\frame
+{
+	\frametitle{Logik - UND Operator}
+	Arbeitsweise des UND ($\land$) Operators\\
+	\vspace{3mm}
+	\begin{tabular}{c|c|c}
+	$P$ & $Q$ & $P \land Q$ \\
+	\hline
+	0 & 0 & 0 \\
+	0 & 1 & 0 \\
+	1 & 0 & 0 \\
+	1 & 1 & 1
+	\end{tabular}
+}
+
+\frame
+{
+	\frametitle{Logik - ODER Operator}
+	Arbeitsweise des ODER ($\lor$) Operators\\
+	\vspace{3mm}
+	\begin{tabular}{c|c|c}
+	$P$ & $Q$ & $P \lor Q$ \\
+	\hline
+	0 & 0 & 0 \\
+	0 & 1 & 1 \\
+	1 & 0 & 1 \\
+	1 & 1 & 1
+	\end{tabular}
+}
+
+\frame
+{
+	\frametitle{Logik - NICHT Operator}
+	Arbeitsweise des NICHT ($\lnot$) Operators\\
+	\vspace{3mm}
+	\begin{tabular}{c|c}
+	$P$ & $\lnot P$ \\
+	\hline
+	0 & 1 \\
+	1 & 0
+	\end{tabular}
+}
+
+\frame
+{
+	\frametitle{Logik - Zusammengesetzte Operatoren}
+	\begin{itemize}
+    \item NAND (Nicht - Und)
+    \item NOR (Nicht - Oder)
+    \end{itemize}
+    \begin{tabular}{ll}
+    NAND
+    \begin{tabular}{c|c|c}
+	$P$ & $Q$ & $P \lor Q$ \\
+	\hline
+	0 & 0 & 1 \\
+	0 & 1 & 1 \\
+	1 & 0 & 1 \\
+	1 & 1 & 0
+	\end{tabular}
+    &
+    NOR
+    \begin{tabular}{c|c|c}
+	$P$ & $Q$ & $P \lor Q$ \\
+	\hline
+	0 & 0 & 1 \\
+	0 & 1 & 0 \\
+	1 & 0 & 0 \\
+	1 & 1 & 0
+	\end{tabular}
+    \end{tabular}
+}
+
+
+
+\frame
+{
+	\frametitle{Logik - Gesetze}
+	{\small
+	\begin{itemize}
+	\item De Morgan\\
+	$\lnot (P \land Q) \equiv (\lnot P \lor \lnot Q)$\\
+	$\lnot (P \lor Q) \equiv (\lnot P \land \lnot Q)$
+	\item Kommunitativit"at\\
+	$(P \land Q) \equiv (Q \land P)$\\
+	$(P \lor Q) \equiv (Q \lor P)$
+	\item Assoziativit"at\\
+	$((P \land Q) \land R) \equiv (P \land (Q \land R))$\\
+	$((P \lor Q) \lor R) \equiv (P \lor (Q \lor R))$
+	\item Distributivit"at\\
+	$(P \land (Q \lor R)) \equiv ((P \land Q) \lor (P \land R))$\\
+	$(P \lor (Q \land R)) \equiv ((P \lor Q) \land (P \lor R))$
+	\end{itemize}
+	}
+}
+
+\frame
+{
+	\frametitle{Logik - Operatorrangfolge}
+	\begin{enumerate}
+	\item NICHT
+	\item UND
+	\item ODER
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{Logik - Beispiele}
+	Seien P, Q und R die folgenden Aussagen:\\
+	\begin{tabbing}
+	\hspace{2cm} \= \kill
+	$P$: \> Ich habe Durst\\
+	$Q$: \> Mein Glas ist leer\\
+	$R$: \> Es ist drei Uhr
+	\end{tabbing}
+	{\small
+	\begin{tabbing}
+	\hspace{8cm} \= \kill
+	Ich habe Durst und mein Glas ist nicht leer\> $P \land \lnot Q$\\
+	Es ist drei Uhr und ich habe Durst\>$R \land P$\\
+	Wenn es drei Uhr ist, dann habe ich Durst\>$R \Rightarrow P$\\
+	Wenn ich Durst habe ist mein Glas leer\>$P \Rightarrow Q$\\
+	Wenn ich keinen Durst habe, dann ist mein Glas nicht leer\\
+	\> $\lnot P \Rightarrow \lnot Q$
+	\end{tabbing}
+	}
+}
+
+
+\frame
+{
+	\frametitle{"Ubungen}
+	Sei P die Aussage \emph{Logik macht Spass} und Q die Aussage \emph{Heute ist Samstag}.
+	Dr"ucken Sie die folgenden zusammengesetzten Aussagen in symbolischer Form
+	aus.
+	\begin{enumerate}
+	\item Logik macht kein Spass und heute ist Samstag
+	\item Heute ist nicht Samstag und Logik macht kein Spass
+	\item Logik macht Spass oder heute ist es Samstag
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{"Ubungen - L"osungen}
+	Sei P die Aussage \emph{Logik macht Spass} und Q die Aussage \emph{Heute ist Samstag}.
+	Dr"ucken Sie die folgenden zusammengesetzten Aussagen in symbolischer Form
+	aus.
+	\begin{enumerate}
+	\item Logik macht kein Spass und heute ist Samstag\\
+	$\lnot P \land Q$
+	\item Heute ist nicht Samstag und Logik macht kein Spass\\
+	$\lnot Q \land \lnot P$
+	\item Logik macht Spass oder es ist Samstag\\
+	$P \lor Q$
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{Logik - Tautologie}
+	Eine Tautolgie ist eine Aussage, die unabh"angig vom Wahrheitswert der
+	zugrunde liegenden Bestandteile, immer wahr ist.\\
+	\vspace{4mm}
+	Beispiel:\\
+	$P \lor \lnot P$\\
+	x ist gerade oder x ist nicht durch 2 teilbar.
+	
+}
+
+\frame
+{
+	\frametitle{Wahrheitstabelle}
+	Eine Wahrheitstabelle ist eine tabellarische Aufstellung des Wahrheitswertsverlaufs einer
+	(zusammengesetzen) logischen Aussage. Hier wird jede m"ogliche Kombination von
+	1 (Wahr) und 0 (Falsch) aufgelistet. Danach wird f"ur jede Kombination der 
+	Wert der Aussage bestimmt.\\
+	Gegeben sind die Aussageb P, Q und R. Diese sind wie folgt zusammengesetzt: $(\lnot P \land Q) \lor R$.\\
+	Wieviele Kombinationen sind m"oglich (die Aussagen P, Q und R sind entweder wahr oder falsch)?
+}
+
+\frame
+{
+	\frametitle{Wahrheitstabelle}
+	Aussage: $(\lnot P \land Q) \lor R$\\
+	\vspace{4mm}
+	\begin{tabular}{c|c|c|c}
+	P & Q & R & $(\lnot P \land Q) \lor R$ \\
+	\hline
+	0 & 0 & 0 & ?\\
+	0 & 0 & 1 & ?\\
+	0 & 1 & 0 & ?\\
+	0 & 1 & 1 & ?\\
+	1 & 0 & 0 & ?\\
+	1 & 0 & 1 & ?\\
+	1 & 1 & 0 & ?\\
+	1 & 1 & 1 & ?\\
+	\end{tabular}
+}
+
+\frame
+{
+	\frametitle{Wahrheitstabelle}
+	Aussage: $(\lnot P \land Q) \lor R$\\
+	\vspace{4mm}
+	\begin{tabular}{c|c|c|c}
+	P & Q & R & $(\lnot P \land Q) \lor R$ \\
+	\hline
+	0 & 0 & 0 & 0\\
+	0 & 0 & 1 & 1\\
+	0 & 1 & 0 & 1\\
+	0 & 1 & 1 & 1\\
+	1 & 0 & 0 & 0\\
+	1 & 0 & 1 & 1\\
+	1 & 1 & 0 & 0\\
+	1 & 1 & 1 & 1\\
+	\end{tabular}
+}
+
+\frame
+{
+	\frametitle{"Ubungen}
+	Erstellen Sie zur folgenden Formel die Wahrheitstabelle:\\
+	$P \land (Q \lor \lnot P) \lor (Q \land R)$
+}
+
+\frame
+{
+	\frametitle{Addition}
+	{\small
+	Addition von 3 Bit's\\
+	\vspace{4mm}
+	\begin{tabular}{c|c|c|c|c}
+	A & B & C & S2 & S1 \\
+	\hline
+	0 & 0 & 0 & 0 & 0\\
+	0 & 0 & 1 & 0 & 1\\
+	0 & 1 & 0 & 0 & 1\\
+	0 & 1 & 1 & 1 & 0\\
+	1 & 0 & 0 & 0 & 1\\
+	1 & 0 & 1 & 1 & 0\\
+	1 & 1 & 0 & 1 & 0\\
+	1 & 1 & 1 & 1 & 1\\
+	\end{tabular}\\
+	\vspace{4mm}
+	$S_1 = (\lnot A \land \lnot B \land C) \lor (\lnot A \land B \land \lnot C) \lor (A \land \lnot B \land \lnot C) \lor (A \land B \land C)$\\
+	$S_2 = (A \land B) \lor (B \land C) \lor (A \land C)$
+	}
+}
+
+\frame
+{
+	\frametitle{Bitweise Operationen}
+	$24 \land 9$\\
+	\vspace{4mm}
+	Umwandlung der beiden Zahlen in das Bin"arformat:\\
+	$24_{10} = 11000_2$\\
+	$9_{10} = 1001_2$\\
+	\vspace{4mm}
+	$11000 \land 01001$\\
+	$11000$\\
+	$01001$\\
+	$01000$\\
+	\vspace{4mm}
+	$1000_2 = 8_{10}$\\
+	$24 \land 9 = 8$
+}
+
+\frame
+{
+	\frametitle{"Ubungen}
+	Berechnen Sie:
+	\begin{enumerate}
+	\item $128 \land 64$
+	\item $128 \lor 64$
+	\item $\lnot 128$
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{"Ubungen - L"osungen}
+	Berechnen Sie:
+	\begin{enumerate}
+	\item $128 \land 64 = 0$
+	\item $128 \lor 64 = 192$
+	\item $\lnot 128 = 127$ (falls 128 in einem Byte gespeichert wird)
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{L"osung Aufgabenblatt 3}
+	Aufgabe 1\\
+	\emph{es regnet}: a\\
+	\emph{es ist kalt}: b
+	\begin{enumerate}
+	\item Es regnet aber es ist nicht kalt\\
+	$a \land \lnot b$
+	\item Wenn es regnet, so ist es kalt\\
+	$a \Rightarrow b$	
+	\item Es stimmt nicht, dass es regnet oder kalt ist\\
+	$\lnot (a \lor b)$
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{L"osung Aufgabenblatt 3}
+	Aufgabe 2\\
+	p, q und r: WAHR\\
+	s: FALSCH\\
+	\begin{enumerate}
+	\item $p \land (q \lor s)$\\
+	WAHR
+	\item $p \land q \lor s$\\
+	UND Operator hat die h"ohere Priorit"at.\\
+	$p \land q \lor s \equiv (p \land q) \lor s$\\
+	WAHR
+	\item $p \Rightarrow r$\\
+	$p \Rightarrow r \equiv \lnot p \lor r$\\
+	WAHR
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{L"osung Aufgabenblatt 3}
+	Aufgabe 3\\
+	\begin{enumerate}
+	\item 14 and 25 = 8\\
+	01110\\
+	11001\\
+	01000 = 8
+	\item 29 or 53 = 61
+	\item not 45\\
+	00101101 (8 Bit)\\
+	11010010 = 210
+	\item 74 and 34 or 56 = 58
+	\end{enumerate}
+}
+
+\frame
+{
+	\frametitle{L"osung Aufgabenblatt 3}
+	Aufgabe 4\\
+	\begin{tabular}{c|c|c|c}
+	P & Q & R & $(p \land q) \lor \lnot(p \land \lnot r)$ \\
+	\hline
+	0 & 0 & 0 & 1\\
+	0 & 0 & 1 & 1\\
+	0 & 1 & 0 & 1\\
+	0 & 1 & 1 & 1\\
+	1 & 0 & 0 & 0\\
+	1 & 0 & 1 & 1\\
+	1 & 1 & 0 & 1\\
+	1 & 1 & 1 & 1\\
+	\end{tabular}
+}
+
+\section{Einf"uhrung C++}
+
+\frame
+{
+	\frametitle{Einf"uhrung C++}
+	Um Programme in C++ zu erstellen werden ben"otigt:
+	\begin{enumerate}
+	\item Compiler (GNU C++, Borland C++, Microsoft Visual C++)
+	\item Editierprogramm (Notepad, EMacs, ...)
+	\end{enumerate}
+	\includegraphics[width=100pt]{compiler.eps}
+}
+
+\frame
+{
+	\frametitle{Hello World}
+	Erstellen Sie ein File mit dem Namen \emph{myfirst.cpp} und erstellen Sie das
+	folgende Programm:
+	\lstinputlisting{code/hello.cpp}
+}
+
+\frame
+{
+	\frametitle{Programm compilieren und starten}
+	\includegraphics[width=250pt]{console1.eps}
+}
+
+\begin{frame}[fragile]
+	\frametitle{Hello World}
+	\begin{lstlisting}
+// my first program in C++
+	\end{lstlisting}
+	\emph{Dies ist eine Kommentar Zeile. Alle Zeilen die mit // beginnen sind
+	Kommentare und haben keine Auswirkung auf das Programm. Sie werden
+	genutzt um den Code mit Erkl"arungen zu erg"anzen.}
+	\vspace{3mm}
+	\emph{In C++ existieren zwei M"oglichkeiten f"ur Kommentare:}
+	\begin{lstlisting}
+// Dieser Kommentar geht bis ans Ende der Zeile
+/* Dieser Kommentar endet
+beim Erscheinen der Zeichenfolge */
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Hello World}
+	\begin{lstlisting}
+#include <iostream>
+using namespace std;
+	\end{lstlisting}
+	\emph{Zeilen, die mit einem} \verb|#| \emph{beginnen, sind Anweisungen f"ur den
+	Pr"aprozessor. In diesem Fall wird dem Pr"aprozessor mitgeteilt,
+	das Headerfile iostream in den Code einzubinden. Die im Unterricht
+	am meisten verwendeten Headerfiles sind: iostream, cmath und string.\\
+	Wird die Anweisung} \verb|using namespace std| \emph{weggelassen, so muss das Kommando cout mit std::cout verwendet werden.}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Hello World}
+	\begin{lstlisting}
+int main()
+	\end{lstlisting}
+	\emph{Diese Zeile definiert den Startpunkt des Programms. Es spielt keine
+	Rolle wo im Code sie sich befindet. Wird das Programm ausgef"uhrt, so
+	wird an dieser Stelle begonnen. Alle Programme m"ussen dies
+	besitzen. Mit geschweiften Klammern wird definiert, was alles zum main
+	Teil geh"ort.}
+	\vspace{3mm}
+	\begin{lstlisting}
+cout << "Hello World" << endl;
+	\end{lstlisting}
+	\emph{Mit dieser Anweisung wird die Zeichenkette Hello World auf den
+	Bildschirm geschrieben. Die Ausgabe Funktion cout ist im
+	Headerfile iostream definiert.}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Hello World}
+	\begin{lstlisting}
+return 0;
+	\end{lstlisting}
+	\emph{Die return Anweisung beendet die main Anweisung. Diese Anweisung
+	ben"otigt auch den return Wert. Im Beispiel ist es 0. Dies bedeutet,
+	dass das Programm ohne Fehler beendet wurde. Die meisten Programme
+	enden auf diese Art.}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++ Variablen}
+	\begin{lstlisting}
+Datatype name;
+	\end{lstlisting}
+
+	\vspace{3mm}
+
+	Beispiele:
+	\begin{lstlisting}
+float x; // float Variable mit dem Namen x
+int m,n; // Zwei int Variablen m und n
+double pi = 3.141, g; //Mit Zuweisung
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++ Datatypes}
+	\begin{tabular}{|l|l|l|}
+	\hline
+	\emph{Datatype} & \emph{Number of Bytes} & \emph{Values} \\
+	\hline
+	\verb|char| & ? & single character\\
+	\verb|int| & ? & numerical integer type\\
+	\verb|long int| & ? & numerical integer type\\
+	\verb|short int| & ? & numerical integer type\\
+	\verb|float| & ? & floating point type\\
+	\verb|double| & ? & floating point type\\
+	\verb|bool| & ? & boolean type \verb|true| or \verb|false|\\
+	\hline
+	\end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++ Datentypen}
+	Mit Hilfe des \emph{sizeof} Operators kann der verwendete Speicherplatz einer
+	Variablen bestimmt werden.
+
+	\vspace{3mm}
+
+	\begin{lstlisting}
+int a,b;
+
+// In a werden die Anzahl Bytes welche b
+// verwendet gespeichert.
+a = sizeof(b);
+
+// In a werden die Anzahl Bytes einer
+// double Variablen gespeichert.
+a = sizeof(double);
+	\end{lstlisting}
+\end{frame}
+
+\frame
+{
+	\frametitle{"Ubungen}
+	Schreiben Sie ein C++ Programm, mit welchem Sie den Speicherplatz
+	der verschiedenen Datentypen bestimmen k"onnen.\\
+	Berechnen Sie auch den maximal Wert, welcher in einer Variablen
+	eines bestimmten Datentyps gespeichert werden kann.
+}
+
+\begin{frame}[fragile]
+	\frametitle{"Ubungen - L"osungen}
+	\lstinputlisting{code/sizeof.cpp}
+	Maximaler Wert: \verb|int| : $2^{4 \cdot 8} = 2^{32}$
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++ Konstanten}
+	Eine Konstante ist eine Variable, welcher den Wert nicht "andern kann.
+	\begin{lstlisting}
+const int m = 5;
+const int n; // Falsche Anweisung, kein Wert
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++ Operatoren - Zuweisung}
+	Mit dem Zuweisungsoperator \verb|=| k"onnen wir Werte zu Variablen
+	zuweisen.
+
+	\vspace{3mm}
+
+	\begin{lstlisting}
+a = 5;
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++ Operatoren - Arithmetisch}
+	\begin{itemize}
+	\item \verb|+  | Addition
+	\item \verb|-  | Subtraktion
+	\item \verb|*  | Multiplikation
+	\item \verb|/  | Division
+	\item \verb|%  | Modulo (nur ganzzahlige Datentypen)
+	\item \verb|+= | \verb|i+=7| ist identisch mit \verb|i=i+7|
+	\item \verb|-= | \verb|i-=7| ist identisch mit \verb|i=i-7|
+	\item \verb|*= | \verb|i*=7| ist identisch mit \verb|i=i*7|
+	\item \verb|/= | \verb|i/=7| ist identisch mit \verb|i=i/7|
+	\item \verb|%= | \verb|i%=7| ist identisch mit \verb|i=i%7| (nur ganzzahlige Datentypen)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++ Operatoren - Inkrement/Dekrement}
+	In C++ existieren ein Inkremetoperator \verb|++| und ein
+	Dekrementoperator \verb|--|.
+
+	\vspace{5mm}
+
+	\verb|i++  | ist "aquivalent mit \verb|i = i + 1|\\
+	\verb|i--  | ist "aquivalent mit \verb|i = i - 1|
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++ Operatoren - Relational}
+	\begin{itemize}
+	\item \verb|== | Gleich
+	\item \verb|!= | Ungleich
+	\item \verb|>  | Gr"osser als
+	\item \verb|<  | Kleiner als
+	\item \verb|>= | Gr"osser gleich
+	\item \verb|<= | Kleiner gleich
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++ Operatoren - Logisch}
+	In C++ existieren die folgenden logischen Operatoren:
+
+	\begin{itemize}
+	\item \verb|!           Nicht|
+	\item \verb|&&          Und|
+	\item \begin{verbatim}||          Oder\end{verbatim}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 4}
+	Aufgabe 3 - Mathematische Ausdr"ucke
+	\begin{itemize}
+	\item $\frac{a}{b} - \frac{x}{y}$\\
+	\verb|a/b-x/y|
+	\item $\frac{a+b}{a-b} - \frac{x-y}{x+y}$\\
+	\verb|(a+b)/(a-b)-(x-y)/(x+y)|
+	\item $ax^{3}+bx^{2}+cx+d$\\
+	\verb|a*x*x*x+b*x*x+c*x+d|\\
+	\verb|a*pow(x,3)+b*pow(x,2)+c*x+d|
+	\item $\frac{1}{x}+\frac{2}{x^{2}}+\frac{3}{x^{3}}+\frac{4}{x^{4}}$\\
+	\verb|1/x+2/(x*x)+3/(x*x*x)+4/(x*x*x*x)|\\
+	\verb|1/x+2/pow(x,2)+3/pow(x,3)+4/pow(x,4)|
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++ Output}
+	Eine Ausgabe erfolgt mit dem Befehl \verb|cout|. \verb|cout| ist ein Stream, in
+	welchen ein Wert geschrieben werden kann, der auf der Konsole
+	erscheinen soll.
+	\begin{lstlisting}
+cout << "C++" << " is so great" << endl;
+int a = 5;
+cout << a << endl; // Gibt den Inhalt von a aus
+cout << "a" << endl; // Gibt das Zeichen a aus
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++ Input}
+	Eine Eingabe erfolgt mit dem Befehl \verb|cin|. \verb|cin| ist ein Stream, von
+	welchem Werte "uber die Tastatur eingelesen werden k"onnen.
+	\begin{lstlisting}
+// Einlesen eines ganzzahligen Wertes
+int a;
+cin >> a;
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 5}
+	Aufgabe 1 - Umlaufzeit Satellit
+	{\tiny
+	\lstinputlisting{code/es5a1.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 5}
+	Aufgabe 2 - Freier Fall
+	{\tiny
+	\lstinputlisting{code/es5a2.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 5}
+	Aufgabe 3 - Gleichf"ormige Bewegung
+	{\tiny
+	\lstinputlisting{code/es5a3.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Strukturen}
+	Um eigene Datentypen, welche aus mehreren Werten bestehen, zu erstellen, werden
+	Strukturen erstellt:
+	{\tiny
+	\begin{lstlisting}
+struct Fraction {
+  int numerator; // zaehler
+  int denominator; // nennen
+};
+	
+int main() {
+  Fraction f1;
+  f1.numerator = 1; // Zaehler setzen
+  f1.denominator = 2; // Nenner setzen
+  return 0;
+}
+	\end{lstlisting}
+	}
+	Die einzelnen Werte (numerator, denominator) werden Attribute genannt.
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Strukturen}
+	\begin{lstlisting}
+struct Product {
+  float price;
+  float weight;
+};
+	
+int main() {
+  Product apple, banana, melon;
+  return 0;
+}
+	\end{lstlisting}
+\end{frame}
+
+\frame
+{
+	\frametitle{Strukturen - "Ubung}
+	Implementieren Sie eine Struktur f"ur Personen. Eine Person
+	besteht aus einem Namen, einem Alter und einem Geschlecht.\\
+	Schreiben Sie ein kurzes Programm um Ihre Struktur zu testen.
+}
+
+\begin{frame}[fragile]
+	\frametitle{Strukturen}
+	Eine Struktur kann neben Attributen auch noch Eigenschaften haben:
+	{\tiny
+	\begin{lstlisting}
+struct Person {
+  string name;
+  void printName() {
+    cout << "My Name is " << name << endl;
+  }
+};
+	
+int main() {
+  Person p;
+  p.name = "David Herzig";
+  p.printName();
+  return 0;
+}
+	\end{lstlisting}
+	}
+	In der Eigenschaft kann nun ein beliebiges Code Fragment erstellt werden.
+\end{frame}
+
+\frame
+{
+	\frametitle{Strukturen - "Ubung}
+	Implementieren Sie eine Struktur f"ur Rechtecke. Die Struktur soll
+	Attribute f"ur Breite und H"ohe haben.\\
+	Des weiteren soll die Strukturen zwei Eigenschaften aufweisen:
+	Eine Eigenschaft, welche die Fl"ache des Rechtecks ausgibt, die zweite
+	Eigenschaft soll den Umfang ausgeben.
+}
+
+\begin{frame}[fragile]
+	\frametitle{Strukturen - "Ubung}
+	{\tiny
+	\lstinputlisting{code/rectangle1.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Strukturen - R"uckgabewerte}
+	{\tiny
+	\lstinputlisting{code/rectangle2.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Strukturen - Parameter}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Strukturen - Split Deklaration, Implementierung}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Strukturen - Public, Private}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Strukturen, Klassen}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Objektorientierte Programmierung}
+	Die wichtigsten Eigenschaften der strukturierten Programmierung sind
+	\begin{itemize}
+	\item Klassen und Objekte
+	\item Datenkapselung
+	\item Vererbung
+	\item Polymorphismus
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Strukturierte Programmierung}
+	Die wichtigsten Eigenschaften der strukturierten Programmierung sind
+	\begin{itemize}
+	\item Statements
+	\item Sequenzen
+	\item Selektionen
+	\item Schleifen
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{C++}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Selektionen}
+	Die if Selektion wird verwendet, wenn ein Code nur dann ausgef"uhrt
+	werden soll, wenn eine bestimmte Bedingung wahr ist.
+	\begin{lstlisting}
+	if (condition) {
+  	  // code fragment 1
+	} else {
+  	  // code fragment 2
+	}
+	\end{lstlisting}
+	Ist die Bedingung (condition) wahr, so wird das Code Fragment 1 ausgef"uhrt, ist die
+	falsch, so wird das Code Fragment 2 (else Block) ausgef"uhrt.\\
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Selektionen}
+	Der else Block kann auch weggelassen werden.
+	\begin{lstlisting}
+	if (condition) {
+  	  // code fragment 1
+	}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Selektionen}
+	Es k"onnen auch mehrere Bedingungen abgefragt werden.
+	\begin{lstlisting}
+	if (condition) {
+  	  // code fragment 1
+	} else if (condition) {
+	  // code fragment 2
+	} else if (condition) {
+	  // code fragment 3
+	}
+	\end{lstlisting}
+	Die erste Bedingung die zutrifft, wird ausgef"uhrt. Die weiteren
+	Bedinungen werden dann nicht mehr gepr"uft.
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Selektionen - Aufbau von Bedingungen}
+	Bedingungen k"onnen jeweils wahr \verb|(true)| oder falsch \verb|(false)| sein.\\
+	Bedingungen k"onnen mit Vergleichsoperatoren (\verb|>, >=, <, <=, ==, !=|) und Logischen Operatoren
+	(\verb=&&, ||, !=) aufgebaut werden.
+	\begin{lstlisting}
+	int n = 5, m = 10;
+	if (n == 5) {...}
+	if (n>=10 && n<=100) {...}
+	if ((n==4 || n==5) && (x<100.0)) {...}
+	if (!(x==0 || y==0) {...}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Selektionen - Beispiel}
+	\begin{lstlisting}
+	int a = 14;
+	if (a%4 == 0) {
+	  cout << "a ist durch 4 teilbar" << endl;
+	} else if (a = 14) { 
+	  // ACHTUNG: Kein Vergleich sondern eine Zuweisung
+	  cout << "eine Zuweisung ist immer wahr" << endl;
+	} else {
+	  cout << "falls kein fall zutrifft..." << endl;
+	}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Switch}
+	Mit dem \verb|switch| statement kann ein Integer Wert abgefragt werden:
+	{\tiny
+	\begin{lstlisting}
+	int a = 1;
+	switch (a) {
+	  case 1:
+	    cout << "1" << endl;
+	  case 2:
+	    cout << "2" << endl;
+	    break;
+	  case 3:
+	    cout << "3" << endl;
+	    break;
+	  default:
+	    cout << "sonst was..." << endl;
+	}
+	\end{lstlisting}
+	}
+	Der Fall der zutrifft wird ausgef"uhrt. Die Ausf"uhrung geht bis
+	zur n"achsten \verb|break| Anweisung (oder bis an den Schluss der
+	\verb|switch| Selektion.
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 6}
+	Aufgabe 1 - Schaltjahr
+	{\tiny
+	\lstinputlisting{code/es6a1.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 6}
+	Aufgabe 2 - Detailh"andler
+	{\tiny
+	\lstinputlisting{code/es6a2.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 6}
+	Aufgabe 3 - Taschenrechner
+	{\tiny
+	\lstinputlisting{code/es6a3.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Schleifen}
+	Eine Schleife wiederholt einen besimmten Codeblock so lange, wie eine
+	bestimmte Schleifenbedinung erf"ullt bleibt.\\
+	Es gibt die folgenden Schleifen:
+	\begin{itemize}
+	\item \verb|for|
+	\item \verb|while|
+	\item \verb|do-while|
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{for Schleife}
+	Eine \verb|for| Schleife wird dann verwendet, wenn bei Start der Schleife
+	genau bekannt ist, wieviel mal die Schleife ausgef"uhrt wird.
+	\begin{lstlisting}
+	for (init; condition; next) {
+	  // CODE BLOCK
+	}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Beispiel - for}
+	Berechnen Sie die ersten 100 Glieder der folgenden Reihe.
+	\begin{displaymath}
+	sum = \frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + ...
+	\end{displaymath}
+	\begin{lstlisting}
+	int main() {
+	  double sum = 0;
+	  for (int i=0; i<100; i++) {
+	    sum = sum + (1.0/(i+1));
+	  }
+	  cout << sum << endl;
+	  return 0;
+	}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{while Schleife}
+	Eine \verb|while| Schleife wird dann verwendet, wenn bei Start der Schleife
+	nicht bekannt ist, wieviel mal die Schleife ausgef"uhrt wird.
+	\begin{lstlisting}
+	while (condition) {
+	  // CODE BLOCK
+	}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Beispiel - while}
+	Berechnen Sie die folgende Reihe solange, bis ein Glied $<0.0002$ ist.
+	\begin{displaymath}
+	sum = \frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + ...
+	\end{displaymath}
+	{\tiny
+	\begin{lstlisting}
+	int main() {
+	  double sum = 0;
+	  int dividend = 1;
+
+	  while (1.0/dividend >= 0.000000002) {
+	    sum = sum + (1.0/dividend);
+	    dividend = dividend + 1;
+	  }
+	  cout << sum << endl;
+	  return 0;
+	}
+	\end{lstlisting}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{do while Schleife}
+	Der Unterschied zu der \verb|while| Schleife besteht darin, dass die Schleife
+	mindestens einmal ausgef"uhrt wird (die Bedingung wird erst am Ende gepr"uft).
+	\begin{lstlisting}
+	do {
+	  // CODE BLOCK
+	} while (condition);
+	\end{lstlisting}
+	Wird mindestens 1 mal ausgef"uhrt, da die Schleifenbedingung erst nach
+	dem ersten Durchlauf gepr"uft wird.
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{continue, break}
+	Sobald in einem Code Block innerhalb einer Schleife die Anweisung \verb|break|
+	auftritt, wird die Schleife beendet.\\
+	Sobald in einem Code Block innerhalb einer Schleife die Anweisung \verb|continue|
+	auftritt, wird der aktuelle Durchgang beendet und zum n"achsten "ubergegangen.\\
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Zufallszahlen}
+	Mit dem Befehl \verb|rand()| kann eine Zufallszahl erzeugt werden, welche
+	zwischen \verb|0| (inklusiv) und \verb|RAND_MAX| (exklusiv) liegt.
+	\begin{lstlisting}
+	cout << RAND_MAX << endl;
+	int n = rand();
+	cout << n << endl;
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{"Ubungen}
+	\begin{enumerate}
+	\item Wie gross ist der Wert \verb|RAND_MAX|?
+	\item Erstellen Sie ein Programm, welches 10 ganze Zahlen zwischen 0 und \verb|RAND_MAX| ausgibt.
+	\item Erstellen Sie ein Programm, welches 10 Zahlen zwischen 0 und 1 ausgibt.
+	\item Erstellen Sie ein Programm, welches 10 ganze Zahlen zwischen n (untere Grenze, inklusive) und m (obere Grenze, exklusive) ausgibt.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{"Ubungen}
+	{\tiny
+	\lstinputlisting{code/random.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 7}
+	Aufgabe 1 - Kleinste Zahl
+	{\tiny
+	\lstinputlisting{code/es7a1.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 7}
+	Aufgabe 2 - Gr"osster gemeinsamer Teiler
+	{\tiny
+	\lstinputlisting{code/es7a2.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 7}
+	Aufgabe 3 - Primzahlen
+	{\tiny
+	\lstinputlisting{code/es7a3.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 8}
+	Aufgabe 1 - Dreieck
+	{\tiny
+	\lstinputlisting{code/es8a1.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 8}
+	Aufgabe 2 - Roulette
+	{\tiny
+	\lstinputlisting{code/es8a2.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Arrays}
+        Mit einem Array k"onnen mehrere Variablen vom gleichen Typ
+        gleichzeitig deklariert werden.
+	\begin{lstlisting}
+	datatype name[number of elements];
+	\end{lstlisting}
+	\begin{lstlisting}
+	int foo[5]; // es werden 5 int Variablen angelegt
+	\end{lstlisting}
+	\includegraphics[width=160pt]{arrays1.eps}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Arrays}
+        Der Zugriff auf ein Array Element erfolgt mittels Index:
+	\begin{lstlisting}
+	int foo[5];
+	...
+	foo[0] = 1; // Schreiben des ersten Elementes
+	int b = foo[4]; // Lesen des letzten Elementes
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Arrays}
+        ACHTUNG: Der Index beim Array Zugriff wird nicht "uberpr"uft:
+	\begin{lstlisting}
+	int a[5]; // es werden 5 int Variablen angelegt
+
+	a[5] = 7; // VERBOTENER ZUGRIFF
+	\end{lstlisting}
+	Dies ist ein Zugriff auf einen Speicherbereich, welcher nicht
+	mehr zum Array geh"ort. Dies kann zu einem Programmabsturz f"uhren.
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Arrays}
+        Initialisierung
+	\begin{lstlisting}
+	int foo [5] = {16, 2, 77, 40, 12071};
+	\end{lstlisting}
+	\includegraphics[width=160pt]{arrays2.eps}
+	\begin{lstlisting}
+	int foo [5] = {16, 2, 77};
+	// Index 3 und 4 werden mit 0 aufgefuellt
+	\end{lstlisting}
+	\includegraphics[width=160pt]{arrays3.eps}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Arrays}
+        Initialisierung
+	\begin{lstlisting}
+	const int NUMBER_OF_ELEMENTS = 100;
+	int a[NUMBER_OF_ELEMENTS];
+	for (int i=0; i<NUMBER_OF_ELEMENTS; i++) {
+	  a[i] = 0;
+	}
+	\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{L"osung Aufgabenblatt 9}
+	Aufgabe 1 - Galtonsches Brett
+	{\tiny
+	\lstinputlisting{code/es9a1.cpp}
+	}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Struktogramme}
+	Ein Struktogramm ist ein Diagramm, welches zur graphischen Darstellung eines
+	strukturierten Programmes/Algorithmus verwendet werden kann. Strukturierte
+	Programmierung besteht aus:
+	\begin{itemize}
+	\item Anweisungen (Eingabe, Ausgabe, Berechnungen, ...)
+	\item Sequenzen (Mehrere Anweisungen zusammengefasst)
+	\item Selektionen (if, switch)
+	\item Schleifen (for, while, do while)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Struktogramme}
+	Anweisungen, Sequenzen\\
+	\includegraphics[width=100pt]{ns1.eps}
+		
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Struktogramme}
+	Selektionen\\
+	if Selektion ohne else\\
+	\includegraphics[width=130pt]{ns2.eps}\\
+	if Selektion mit else\\
+	\includegraphics[width=130pt]{ns3.eps}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Struktogramme}
+	Selektionen\\
+	Verschachtelte Selektionen\\
+	\includegraphics[width=130pt]{ns4.eps}\\
+	if Selektion mit mehreren else if, switch Selektion\\
+	\includegraphics[width=130pt]{ns5.eps}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Struktogramme}
+	Schleifen\\
+	for Schleife\\
+	\includegraphics[width=160pt]{ns6.eps}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Struktogramme}
+	Schleifen\\
+	while Schleife\\
+	\includegraphics[width=100pt]{ns7.eps}\\
+	do while Schleife\\
+	\includegraphics[width=100pt]{ns8.eps}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Struktogramme}
+	Beispiel Aufgabenblatt 7, Aufgabe 1, Kleinste Zahl
+	\includegraphics[width=100pt]{ns9.eps}\\
+	\vspace{5mm}
+	Editor:\\
+	{\tiny
+	\verb|http://www.whiledo.de/index.php?p=struktogrammeditor|
+	}
+\end{frame}
+
+\frame
+{
+	\frametitle{Aufbau eines Computers}
+	Neumann Architektur\\
+	\vspace{3mm}
+	\begin{multicols}{2}
+	\includegraphics[width=110pt]{neumann.ps}
+	
+	\begin{itemize}
+	\item Referenzmodell f"ur Computer
+	\item Ver"offentlicht 1945 durch Mathematiker John von Neumann
+	\item Grundlage f"ur die meisten Computersysteme
+	\end{itemize}
+	\end{multicols}
+}
+
+\frame
+{
+	\frametitle{Aufbau eines Computers}
+	Neumann Architektur - Rechenwerk\\
+	\vspace{3mm}
+	\begin{multicols}{2}
+	\includegraphics[width=110pt]{neumann.ps}
+	ALU (Arithmetic Logic Unit) (Rechenwerk)
+	\begin{itemize}
+	\item F"uhrt Rechenoperationen aus
+	\item F"uhrt logische Verkn"upfungen durch
+	\end{itemize}
+	\end{multicols}
+}
+
+\frame
+{
+	\frametitle{Aufbau eines Computers}
+	Neumann Architektur - Steuerwerk\\
+	\vspace{3mm}
+	\begin{multicols}{2}
+	\includegraphics[width=110pt]{neumann.ps}
+	\begin{itemize}
+	\item Control Unit (Steuerwerk)
+	\item Interprediert die Anweisungen eines Programms und steuert die Befehlsabfolge
+	\end{itemize}
+	\end{multicols}
+}
+
+\frame
+{
+	\frametitle{Aufbau eines Computers}
+	Neumann Architektur - Bussystem\\
+	\vspace{3mm}
+	\begin{multicols}{2}
+	\includegraphics[width=110pt]{neumann.ps}
+	Bussystem besteht aus 3 Bussen:
+	\begin{itemize}
+	\item Steuerbus
+	\item Adressbus
+	\item Datenbus
+	\end{itemize}
+	\end{multicols}
+}
+
+\frame
+{
+	\frametitle{Aufbau eines Computers}
+	Neumann Architektur - Speicherwerk\\
+	\vspace{3mm}
+	\begin{multicols}{2}
+	\includegraphics[width=110pt]{neumann.ps}
+	\begin{itemize}
+	\item Memory
+	\item Speichert Daten und Programme, welche vom Rechenwerk gelesen werden
+	\end{itemize}
+	\end{multicols}
+}
+
+\frame
+{
+	\frametitle{Aufbau eines Computers}
+	Neumann Architektur - Ein-/Ausgabewerk\\
+	\vspace{3mm}
+	\begin{multicols}{2}
+	\includegraphics[width=110pt]{neumann.ps}
+	\begin{itemize}
+	\item Steuert die Ein- und Ausgabe von Daten zum Anwender oder anderen Systemen (Tastatur, Bildschirm)
+	\end{itemize}
+	\end{multicols}
+}
+
+\frame
+{
+	\frametitle{Aufbau eines Computers}
+	Neumann Architektur - Beispiel\\
+	\vspace{3mm}
+	\begin{multicols}{2}
+	\includegraphics[width=160pt]{neumannexample.ps}
+	{\small
+	\begin{enumerate}
+	\item "Uber den Steuerbus wird der Speicher angesprochen
+	\item "Uber den Adressbus (16 Bit) wird die richtige Adresse gew"ahlt
+	\item "Uber den Datenbus (8 Bit) werden die Daten zur CPU transportiert
+	\item Maximaler Speicher: 64k Byte
+	\end{enumerate}
+	}
+	\end{multicols}
+}
+
+\frame
+{
+	\frametitle{Intel i386DX}
+	\includegraphics[width=60pt]{i386dx.eps}
+
+	\vspace{3mm}
+
+	{\small
+	Produktionsjahr: 1985 - 2007\\
+	Adressbus: 32 Bit\\
+	Datenbus: 32 Bit
+
+	\vspace{3mm}
+
+	Wie gross ist der adressierbare Speicher?
+	}
+}
+
+\frame
+{
+	\frametitle{Intel i386DX}
+	\includegraphics[width=60pt]{i386dx.eps}
+
+	\vspace{3mm}
+
+	{\small
+	Produktionsjahr: 1985 - 2007\\
+	Adressbus: 32 Bit\\
+	Datenbus: 32 Bit
+
+	\vspace{3mm}
+
+	$2^{32}$ m"ogliche Adressen. Jeder Wert adressiert 1 Byte im Speicher.\\
+	Folglich k"onnen theoretisch bis 4 GB adressiert werden.
+	}
+}
+
+\begin{frame}[fragile]
+
+	\frametitle{bool Variable}
+	Das folgende Programm gibt den Wert 1 aus, d.h. 1 Byte. Eine
+	Boolean Variable ben"otgit allerdings nur 1 Bit (1 True, 0 False).
+
+	\begin{lstlisting}
+	int main() {
+	  bool b;
+	  cout << sizeof(b) << endl;
+	  return 0;
+	}
+	\end{lstlisting}
+
+	Es k"onnen keine einzelnen Bits adressiert werden.
+\end{frame}
+
+\frame
+{
+	\frametitle{Commodore Amiga 500}
+	\begin{multicols}{2}
+	\includegraphics[width=170pt]{a500.eps}
+
+	\vspace{3mm}
+
+	{\small
+	Produktionsjahr: ?\\
+	Adressbus: ?\\
+	Datenbus: ?\\
+	Maximaler Speicher: ?\\
+	Anzahl Register: ?\\
+	CPU Takt: ?
+	}
+	\end{multicols}
+}
+
+\frame
+{
+	\frametitle{Commodore Amiga 500}
+	\begin{multicols}{2}
+	\includegraphics[width=170pt]{a500.eps}
+
+	\vspace{3mm}
+
+	{\small
+	Produktionsjahr: 1987 - 1991\\
+	Adressbus: 24 Bit\\
+	Datenbus: 16 Bit\\
+	Maximaler Speicher: 16 MB (theoretisch)\\
+	Anzahl Register: 17 (8 Datenregister, 8 Adressregister, Befehlscounter)\\
+	CPU Takt: 8-20 MHz
+	}
+	\end{multicols}
+}
+
+\begin{frame}[fragile]
+	\frametitle{CPU Register}
+	Bei der Definition einer Variablen in \verb|C++| kann das Schl"usselwort
+	\verb|register| verwendet werden. Dies soll bewirken, dass eine Variable
+	in einem CPU Register gespeichert wird. Ist allerdings nicht garantiert.
+
+	\begin{lstlisting}
+	int main() {
+	  register int n;
+	  // falls moeglich, wird n in einem
+	  // Register gespeichert.
+	}
+	\end{lstlisting}
+	
+	Sollte nur f"ur Variablen verwendet werden, welche schnellen Zugriff ben"otigen.
+\end{frame}
+
+\section{Vorbereitung Aufnahmepr"ufung}
+\frame
+{
+	\frametitle{Vorbereitung Aufnahmepr"ufung}
+	\begin{itemize}
+	\item Aufnahmepr"ufung WS 2003/2004
+	\item Aufnahmepr"ufung SS 2005
+	\end{itemize}
+}
+
+
+\end{document}
