@@ -201,22 +201,20 @@
 	\frametitle{Zahlensysteme - Umwandlung ins Dezimalsystem}
 	Umwandlung einer Zahl x im System mit Basis b in eine Dezimalzahl unter Verwendung der Polynomfunktion P(b):
 	\begin{displaymath}
-	P(b) = \sum_{\mathrm{i}=0}^{n} a_\mathit{i} b^\mathit{i}
+	P(b) = \sum_{\mathrm{i}=0}^{n-1} a_\mathit{i} b^\mathit{i}
 	\end{displaymath}		
 	Die Formel ist eine Kurzschreibweise f"ur eine Kette von Additionen:
 	\begin{displaymath}
 	P(b)= \underbrace{a_i b^i}_\text{i=0} + \underbrace{a_i b^i}_\text{i=1} + \underbrace{a_i b^i}_\text{i=2} + \dots + \underbrace{a_i b^i}_\text{i=(n-1)}
 	\end{displaymath}	
-	Der \textbf{Endwert \textit{n}} definitert wie oft das Addieren wiederholt werden soll - Ergo \textit{n} bestimmt die Anzahl der Terme.\\
-	Die \textbf{Laufvariable \textit{i}} startet bei 0, steigt bei jedem Term um 1, somit ist das letzte {\it i = (n - 1)}.	
+	Die \textbf{Laufvariable \textit{i}} startet bei 0 und steigt bei jedem weiteren angef"ugten Additionsterm um 1.	\\
+	Der \textbf{Endwert \textit{n-1}} definitert wie oft das Addieren wiederholt wird ... d.h. so lange bis die Laufvariable \textit{i = (n - 1)} annimmt.
 }
 
 \frame 
 {
-	\frametitle{Zahlensysteme - Umwandlung ins Dezimalsystem}
-	
-		
-	Bei einer Zahl mit einer Basis \textit{b} und \textit{n} Ziffern werden die Ziffern von \textit{$a_0$} bis \textit{$a_{n-1}$} durchnummeriert (von rechts nach links):
+	\frametitle{Zahlensysteme - Umwandlung ins Dezimalsystem}	
+	Bei einer Zahl mit einer Basis \textit{b} und \textit{n} Ziffern werden die Ziffern von \textit{$a_0$} bis \textit{$a_{n-1}$} durchnummeriert (... von rechts beginnend !):
 	\begin{displaymath}	
 	\overbrace{\underbrace{a_3}_\text{Ziffer 3} \underbrace{a_2}_\text{Ziffer 2} \underbrace{a_1}_\text{Ziffer 1} \underbrace{a_0}_\text{Ziffer 0}}^\text{Anz. Ziffern (n=4)}
 	\end{displaymath}		 
@@ -230,22 +228,23 @@
 \frame
 {
 	\frametitle{Zahlensysteme - Umwandlung ins Dezimalsystem}
-	Herleiten des Polynoms bei einer Zahl \textit{x} mit Basis \textit{b=8} und \textit{n=4} Ziffern: 
-	\begin{displaymath}	
-	x = \overbrace{\underbrace{1}_\text{$a_3$} \underbrace{6}_\text{$a_2$} \underbrace{2}_\text{$a_1$} \underbrace{4}_\text{$a_0$}}^\text{Anz. Ziffern (n=4)}
-	\end{displaymath}			
-	\vspace{1mm}
+	Herleiten des Polynoms f"ur die Zahl \textit{x} mit Basis \textit{b=8} und \textit{n=4} Ziffern: 
 	\begin{displaymath}
 	P(8)= a_0 \cdot 8^0+ a_1 \cdot 8^1 + a_2 \cdot 8^2 + a_3 \cdot 8^3
 	\end{displaymath}	
 	\vspace{1mm}
+	\begin{displaymath}	
+	x = \overbrace{\underbrace{\color{red}{1}}_\text{$a_3$} \underbrace{\color{green}{6}}_\text{$a_2$} \underbrace{\color{blue}{2}}_\text{$a_1$} \underbrace{\color{purple}{4}}_\text{$a_0$}}^\text{Anz. Ziffern (n=4)}
+	\end{displaymath}	
+	\phantom{x} \\
+	Anstelle der Variabeln {\it $a_0$} bis {\it $a_{3}$} werden im Polynom die jeweiligen Ziffernwerte aus der Zahl x eingesetzt.
 	\begin{displaymath}
 	\begin{array}{ll}
 	Dezimalzahl = \\
-	\;\;\;\: 4 \cdot 8^0 \\
-	+\; 2 \cdot 8^1 \\
-	+\; 6 \cdot 8^2 \\
-	+\; 1 \cdot 8^3
+	\;\;\;\: {\color{purple}4} \cdot 8^0 \\
+	+\; {\color{blue}2} \cdot 8^1 \\
+	+\; {\color{green}6} \cdot 8^2 \\
+	+\; {\color{red}1} \cdot 8^3
 	\end{array}
 	\end{displaymath}
 }
