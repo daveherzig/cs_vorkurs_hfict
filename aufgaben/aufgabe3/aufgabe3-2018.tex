@@ -1,0 +1,97 @@
+\documentclass[a4paper,10pt]{article}
+\topmargin-1cm
+\addtolength{\textheight}{2.5cm}
+\addtolength{\textwidth}{2cm}
+\usepackage{times}
+
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
+
+\setlength{\parindent}{0cm}
+
+\title{Latex Template}
+\author{David Herzig}
+\date{WS2004}
+
+\begin{document}
+
+HF-ICT - H"ohere Fachschule f"ur Informations- und Kommunikationstechnologie\\
+CH 4132 Muttenz\\
+P.S"utterlin
+
+\vspace{2mm}
+
+\begin{center}
+{\Large \bf Vorkurs Informatik}\\
+Exercise sheet 2 - 2018 Edition
+\end{center}
+
+\vspace{2mm}
+
+\line(1,0){400}
+
+\vspace{5mm}
+
+\section{Logik 1}
+Gegeben:\\
+\emph{es ist anstrengend}: a\\
+\emph{es macht Spass}: b\\
+Erstellen Sie Ausdr"ucke f"ur:
+
+\begin{enumerate}
+\item Es ist anstrengend und trotzdem macht es Spass.
+\item Es macht keinen Spass wenn es anstrengend ist.
+\item Es ist nicht anstrengend, trotzdem macht es keinen Spass.
+\end{enumerate}
+
+\section{Logik 2}
+Gegeben:\\
+p, q und r: WAHR\\
+s: FALSCH\\
+Ermitteln Sie den Wahrheitswert der folgenden Aussagen:
+
+\begin{enumerate}
+\item $p \land q \lor s$
+\item $\lnot (p \land q) \lor s$
+\item $\lnot p \lor \lnot r \lor \lnot s$
+\end{enumerate}
+
+\section{Boolsche Operationen}
+F"uhren Sie die folgenden Operationen aus:
+
+\begin{enumerate}
+\item 12 and 3
+\item 3 or 12
+\item not 62
+% 111111 XOR
+% 111110
+% =====
+% 000001 Alle 1er werden 0er und umgekehrt
+\item 74 and 96 or 7
+% 1001010 AND
+% 1100000
+% =====
+% 1000000 OR
+% 0000111 
+% =====
+% 1000111
+
+\end{enumerate}
+
+\section{Bitmaske}
+In einer 1 Byte grossen Bitmaske lassen sich 8 einzelne ``Flags'' setzen, indem man jeweils die Bits mit den Wertigkeiten 1, 2, 4, 8, 16, 32, 64 und 128 mittels \textbf{OR} Operationen gezielt setzt. \\ \\
+D.h. zum setzten der Flags \textbf{4} \textit{(WRITE\_ENABLED)}, \textbf{32} \textit{(DOUBLE\_SIZE)} und \textbf{128} \textit{(HIDDEN)} werden die drei Werte wie folgt verkn"upft: \\ \\
+$4 \lor  32 \lor 128 = 164$ \\ \\
+Die drei Bits sind dann im Byte wie folgt gesetzt: [10100100]. \\ \\
+Wie k"onnen Sie nun nachpr"ufen ob in der Bitmaske die Flags \textit{(WRITE\_ENABLED)} und \textit{(HIDDEN)} gesetzt sind ?
+%Prüfen auf Flag 4 -> 4 AND 164 darf nicht 0 ergeben.%
+%Prüfen auf Flag 128 -> 128 AND 164 darf nicht 0 ergeben.%
+
+\section{Wahrheitstabelle}
+Erstellen Sie f"ur den folgenden boolschen Ausdruck die Wahrheitstabelle:\\
+$(\lnot p \land \lnot s) \lor \lnot(p \land \lnot s)$
+
+\end{document}
+
