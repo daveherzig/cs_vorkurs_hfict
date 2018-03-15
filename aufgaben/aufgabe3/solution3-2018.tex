@@ -1,0 +1,196 @@
+\documentclass[a4paper,10pt]{article}
+\topmargin-1cm
+\addtolength{\textheight}{2.5cm}
+\addtolength{\textwidth}{2cm}
+\usepackage{times}
+
+%Allow Colors
+\usepackage[usenames, dvipsnames]{color}
+%Allow overbrace
+\usepackage{amsmath}
+%Allow XOR
+\usepackage{amssymb}
+
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
+
+\setlength{\parindent}{0cm}
+
+\title{Latex Template}
+\author{David Herzig}
+\date{WS2004}
+
+\def\doubleunderline#1{\underline{\underline{#1}}}
+
+\begin{document}
+
+HF-ICT - H"ohere Fachschule f"ur Informations- und Kommunikationstechnologie\\
+CH 4132 Muttenz\\
+P.S"utterlin
+
+\vspace{2mm}
+
+\begin{center}
+{\Large \bf Vorkurs Informatik}\\
+Exercise sheet 3 - 2018 Edition
+\end{center}
+
+\vspace{2mm}
+
+\line(1,0){400}
+
+\vspace{5mm}
+
+\section{Logik 1}
+Gegeben:\\
+\emph{es ist anstrengend}: a\\
+\emph{es macht Spass}: b\\
+Erstellen Sie Ausdr"ucke f"ur: \\
+	 {\color{ForestGreen}
+		 Ausdr"ucke sind nicht objektiv messbar !!!
+	 }
+
+\begin{enumerate}
+\item Es ist anstrengend und trotzdem macht es Spass. \\
+	 {\color{ForestGreen}
+		 $a \land b$
+	 }
+\item Es macht keinen Spass wenn es anstrengend ist. \\
+	 {\color{ForestGreen}
+		 $a \land \lnot b$
+	 }
+\item Es ist nicht anstrengend, trotzdem macht es keinen Spass. \\
+	 {\color{ForestGreen}
+		 $\lnot a \land \lnot b$
+	 }
+\end{enumerate}
+
+\section{Logik 2}
+Gegeben:\\
+p, q und r: WAHR\\
+s: FALSCH\\
+Ermitteln Sie den Wahrheitswert der folgenden Aussagen:
+
+\begin{enumerate}
+\item $p \land q \lor s$ \\ \\
+	 {\color{ForestGreen}
+		 $1 \land 1 \lor 0 =$ \\
+		 $1 \lor 0 = $ \\
+		 $\mathbf{\doubleunderline{WAHR}}$ 
+	 }
+\item $\lnot (p \land q) \lor s$ \\ \\
+	 {\color{ForestGreen}
+		 $\lnot (1 \land 1) \lor 0 =$ \\
+		 $\lnot (1) \lor 0 =$ \\
+		 $0 \lor 0 =$ \\
+		 $\mathbf{\doubleunderline{FALSCH}}$ 
+	 }
+\item $\lnot p \lor \lnot r \lor \lnot s$ \\ \\
+	 {\color{ForestGreen}
+		 $\lnot 1 \lor \lnot 1 \lor \lnot 0 =$ \\
+		 $0 \lor 0 \lor 1 =$ \\
+		 $\mathbf{\doubleunderline{WAHR}}$ 
+	 }
+\end{enumerate}
+
+\section{Boolsche Operationen}
+F"uhren Sie die folgenden Operationen aus:
+
+\begin{enumerate}
+\item 12 and 3 \\ \\
+	 {\color{ForestGreen}
+		 1100 AND \\
+		 0011 \\
+		 ==== \\
+		 0000 \\ \\
+		 12 and 3 = $\mathbf{\doubleunderline{0}}$
+	 }
+\item 3 or 12 \\ \\
+	 {\color{ForestGreen}
+		 1100 OR \\
+		 0011 \\
+		 ==== \\
+		 1111 \\ \\
+		 3 or 12 = $\mathbf{\doubleunderline{15}}$
+	 }
+\item not 62 \\ \\
+	 {\color{ForestGreen}
+		 111110 NOT \\
+		 ===== \\
+		 000001 \\ \\
+		 not 62 = $\mathbf{\doubleunderline{1}}$
+	 }
+\item 74 and 96 or 7 \\ \\
+	 {\color{ForestGreen}
+		 1001010 AND \\
+		 1100000 \\
+		 ====== \\
+		 1000000 \\
+		 \\
+		 1000000 OR \\
+		 0000111 \\
+		 ====== \\
+		 1000111 \\ \\
+		 74 and 96 or 7 = $\mathbf{\doubleunderline{71}}$
+	 }
+\end{enumerate}
+
+\section{Bitmaske}
+In einer 1 Byte grossen Bitmaske lassen sich 8 einzelne ``Flags'' setzen, indem man jeweils die Bits mit den Wertigkeiten 1, 2, 4, 8, 16, 32, 64 und 128 mittels \textbf{OR} Operationen gezielt setzt. \\ \\
+D.h. zum setzten der Flags \textbf{4} \textit{(WRITE\_ENABLED)}, \textbf{32} \textit{(DOUBLE\_SIZE)} und \textbf{128} \textit{(HIDDEN)} werden die drei Werte wie folgt verkn"upft: \\ \\
+$4 \lor  32 \lor 128 = 164$ \\ \\
+Die drei Bits sind dann im Byte wie folgt gesetzt: [10100100]. \\ \\
+Wie k"onnen Sie nun nachpr"ufen ob in der Bitmaske die Flags \textit{(WRITE\_ENABLED)} und \textit{(HIDDEN)} gesetzt sind ? \\ \\
+	 {\color{ForestGreen}
+		\underline{Pr"ufen auf Flag 4}: \\ \\
+		\textbf{(4 AND 164) $\mathbf{>}$ 0} \\ \\
+		00000100 AND \\
+		10100100 \\
+		======= \\
+		00000100 \\ \\ 
+		4 AND 164 = $\mathbf{\doubleunderline{4}}$ \\
+		
+		\underline{Pr"ufen auf Flag 128}: \\ \\
+		\textbf{(128 AND 164) $\mathbf{>}$ 0} \\ \\
+		100000000 AND \\
+		10100100 \\
+		======= \\
+		10000000 \\ \\ 
+		128 AND 164 = $\mathbf{\doubleunderline{128}}$ \\
+	 }
+
+
+\section{Wahrheitstabelle}
+Erstellen Sie f"ur den folgenden boolschen Ausdruck die Wahrheitstabelle:\\
+$(\lnot p \land \lnot s) \lor \lnot(p \land \lnot s)$ \\
+	 {\color{ForestGreen}
+	 
+	 	$Output = (\overbrace{\lnot p \land \lnot s}^\text{f1}) \lor \lnot ( \overbrace{p \land \lnot s}^\text{f2} )$ \\
+	 
+		\begin{tabular}{c|c|c|c|c}
+		p & s & $f1=\lnot p \land \lnot s$ & $f2=p \land \lnot s$ & $Output = f1 \lor \lnot f2$ \\
+		\hline
+		0 & 0 & \textbf{1} & \textbf{0} & \textbf{1}\\
+		0 & 1 & \textbf{0} & \textbf{0} & \textbf{1}\\
+		1 & 0 & \textbf{0} & \textbf{1} & \textbf{0}\\
+		1 & 1 & \textbf{0} & \textbf{0} & \textbf{1}\\
+		\end{tabular}
+		\\ \\
+		\\
+		\textbf{Weiterer L"osungsansatz (De Morgan):} \\
+		$Output = \overbrace{(\lnot p \land \lnot s)}^\text{$\lnot(p \lor s)$} \lor \overbrace{\lnot ( p \land \lnot s}^\text{$(\lnot p \lor s)$} )$ \\
+		$Output = \lnot(\overbrace{p \lor s}^\text{f1}) \lor \lnot p \lor s$ \\
+		
+		\begin{tabular}{c|c|c|c}
+		p & s & $f1=p \lor s$ & $Output = \lnot f1 \lor \lnot p \lor s$ \\
+		\hline
+		0 & 0 & \textbf{0} & \textbf{1}\\
+		0 & 1 & \textbf{1} & \textbf{1}\\
+		1 & 0 & \textbf{1} & \textbf{0}\\
+		1 & 1 & \textbf{1} & \textbf{1}\\
+		\end{tabular}
+	 }
+\end{document}
+
