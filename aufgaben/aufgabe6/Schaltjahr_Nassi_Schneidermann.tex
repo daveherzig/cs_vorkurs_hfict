@@ -1,0 +1,62 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{struktex}
+\begin{document}
+\begin{center}
+\begin{struktogramm}(125,40)[Loesung 6-1 Variante 1: Schaltjahrbestimmung anhand einer Jahreszahl]
+  \ifthenelse{4}{4}{Jahreszahl ist restfrei teilbar durch 100}{ja}{nein}
+    \ifthenelse{2}{2}{Jahreszahl ist restfrei teilbar durch 400}{ja}{nein}
+      \assign{Jahr ist ein Schaltjahr}
+    \change
+      \assign{Jahr ist kein Schaltjahr}
+    \ifend
+  \change
+    \ifthenelse{2}{2}{Jahreszahl ist restfrei teilbar durch 4}{ja}{nein}
+      \assign{Jahr ist ein Schaltjahr}
+    \change
+      \assign{Jahr ist kein Schaltjahr}
+    \ifend
+  \ifend
+\end{struktogramm}
+\end{center}
+
+.\\
+Daraus lassen sich folgende logischen Ausdr\"ucke ableiten:\\ \\
+\textbf{p =} Schaltjahr \\
+\textbf{q =} kein Schaltjahr \\
+\\
+\textbf{Variablen:} \\
+\textbf{j =} Jahreszahl \\
+\\
+$\mathbf{p} = ((j \bmod{100} = 0) \land (j \bmod{400} = 0)) \lor ((j \bmod{100} \neq 0) \land (j \bmod 4 = 0))$ 
+$\mathbf{q} = ((j \bmod{100} = 0) \land (j \bmod{400} \neq 0)) \lor ((j \bmod{100} \neq 0) \land (j \bmod 4 \neq 0))$ 
+
+\begin{center}
+\begin{struktogramm}(125,75)[Loesung 6-1 Variante 2: Schaltjahrbestimmung anhand einer Jahreszahl]
+  \ifthenelse{4}{1}{Jahreszahl ist restfrei teilbar durch 4}{ja}{nein}
+    \ifthenelse{2}{4}{Jahreszahl ist restfrei teilbar durch 400}{ja}{nein}
+      \assign{Jahr ist ein Schaltjahr}
+    \change
+       \ifthenelse{2}{2}{Jahreszahl ist restfrei teilbar durch 100}{ja}{nein}
+         \assign{Jahr ist kein Schaltjahr}
+       \change
+         \assign{Jahr ist ein Schaltjahr}
+       \ifend
+    \ifend
+  \change
+      \assign{Jahr ist kein Schaltjahr}
+  \ifend
+\end{struktogramm}
+
+\begin{struktogramm}(125,50)[Loesung 6-2: Rabatt je nach verkaufter Menge]
+  \ifthenelse{5}{2}{Verkaufte Menge ist gr\"osser oder gleich 100}{ja}{nein}
+    \ifthenelse{2}{4}{Verkaufte Mege ist gr\"osser oder gleich 10}{ja}{nein}
+      \assign{Rabatt = 8\%}
+    \change
+	\assign{Rabatt = 5\%}
+    \ifend
+  \change
+      \assign{Rabatt = 0\%}
+  \ifend
+\end{struktogramm}
+\end{center}
+\end{document}

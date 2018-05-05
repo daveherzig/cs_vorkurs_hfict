@@ -1,0 +1,2 @@
+The circumference of the circle is: 62.83 cm.
+The area enclosed by the circle is: 314.15 cm^2.

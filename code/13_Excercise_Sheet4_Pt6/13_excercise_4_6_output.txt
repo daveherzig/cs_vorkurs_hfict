@@ -1,0 +1,4 @@
+Result of Equation #1 = 1.5
+Result of Equation #2 = 3.33333
+Result of Equation #3 = 80
+Result of Equation #4 = 1.625

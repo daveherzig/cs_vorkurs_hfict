@@ -1,0 +1,593 @@
+
+<!-- saved from url=(0054)http://www.austincc.edu/akochis/cosc1320/dataTypes.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><style>
+ P { page-break-after: always }
+</style>
+
+
+<title>C++ Data Types</title>
+<style></style></head>
+<body bgcolor="#FFFFD8">
+<hr>
+<b>Types</b>
+<br>
+The fundamental types in C are char (character), int (integer) and float.
+Some compilers include the bool data type.
+<ol>
+<li> <b>char</b>
+<br>
+char is the character type. It usually hold 8 bits which stores an encoded
+character. The standard encoding scheme is ASCII.  However, other
+encoding schemes such as EBCDIC can be used.
+<br><br>
+In C you can manipulate variables defined as character using the same 
+operations that apply to integers.
+<hr>
+<pre>//
+// Character types
+//
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+
+using namespace std;
+
+int main () 
+{
+    char letter;
+    int x;
+    
+    letter='x';
+    cout &lt;&lt; "The size of the char is " &lt;&lt; sizeof(char) &lt;&lt; endl;
+    for(x=0;x&lt;5;x++) {
+	 cout &lt;&lt; letter &lt;&lt; "\t" 
+              &lt;&lt; int(letter) &lt;&lt; "\t" i
+              &lt;&lt; hex &lt;&lt; int(letter) &lt;&lt; endl;
+         cout &lt;&lt; dec;
+         letter++;
+    }
+    system("pause");
+    return 0;
+}            
+</pre>
+<hr>
+<pre>The size of the char is 1
+x       120     78
+y       121     79
+z       122     7a
+{       123     7b
+|       124     7c
+Press any key to continue . . .
+</pre>
+<hr>
+<p>
+</p></li><li><b>bool</b>
+The bool type takes one byte and stores a value of true (1) or false(0).
+<hr>
+<pre>//
+// Boolean types
+//
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+
+using namespace std;
+
+int main () 
+{
+    char letter;
+    bool fv,tv;
+    
+    tv=true;
+    fv=false;
+    
+    cout &lt;&lt; "The size of a bool is " &lt;&lt; sizeof(bool) &lt;&lt; endl;
+    cout &lt;&lt; "true\t"  &lt;&lt; tv &lt;&lt; "\t" 
+	 &lt;&lt; int(tv) &lt;&lt; "\t" 
+         &lt;&lt; hex &lt;&lt; int(tv) &lt;&lt; dec &lt;&lt; endl;
+    cout &lt;&lt; "false\t" &lt;&lt; fv &lt;&lt; "\t" 
+         &lt;&lt; int(fv) &lt;&lt; "\t" i
+         &lt;&lt; hex &lt;&lt; int(fv) &lt;&lt; dec &lt;&lt; endl;
+    system("pause");
+    return 0;
+}            
+</pre>
+<hr>
+<pre>The size of a bool is 1
+true    1       1       1
+false   0       0       0
+Press any key to continue . . .
+</pre>
+<hr>
+<p>
+</p></li><li> <b>int</b>
+<br>
+int is the integer data type. Integers are represented in binary format.
+<ol type="A">
+<li> 
+Binary numbers may be stored in either 1's or 2's complement form.
+Most machines use 2' complement. To form 1's complement just invert the bits.
+For two complement invert the bits and add one.  An interesting property of
+one's complement is that there are two ways to represent zero.
+<br>
+</li><li>
+The size of an int is 4.
+<br>
+</li><li>
+In binary arithmetic subtraction is done by complementing a number and
+then adding it. To add binary numbers use the following rules.
+<pre> 0 + 0 = 0
+ 0 + 1 = 1
+ 1 + 0 = 1
+ 1 + 1 = 10
+
+for ease 1 + 1 + 1 = 11
+
+to add 7 + 4
+
+4       0000 0000 0000 0000 0000 0000 0000 0100
+7       0000 0000 0000 0000 0000 0000 0000 0111
+-----------------------------------------------
+        0000 0000 0000 0000 0000 0000 0000 1011
+
+  
+
+to subtract 7 - 6
+
+First form the complement of 6  
+    6 = 0000 0000 0000 0000 0000 0000 0000 0110
+	1111 1111 1111 1111 1111 1111 1111 1001  invert bits
+        0000 0000 0000 0000 0000 0000 0000 0001  add one
+      -------------------------------------------
+        1111 1111 1111 1111 1111 1111 1111 1010  -6
+        0000 0000 0000 0000 0000 0000 0000 0111  add 7
+       ------------------------------------------
+       10000 0000 0000 0000 0000 0000 0000 0001 1
+
+ignore the final carry as it is overflow. 
+</pre>
+<br>
+<br>
+</li><li> 
+The range of integer variable is determined by the size of the integer.
+For an integer with n bits the range on a two's complement machine is:
+<br><br>
+ - 2 <sup>n-1</sup> ..  2 <sup>n-1</sup> -1 
+<br><br>
+On a one's complement machine the lower bound becomes
+<br><br>
+ -  2<sup>n-1</sup> -1 
+<br><br>
+Since most machines use two's complement you can usually expect:
+<pre>  Bits                 Low                  High
+  16               -32,768                32,767
+  32        -2,147,483,648         2,147,483,647
+</pre>
+<br>
+<p>
+</p></li><li>Overflow
+<hr>
+<pre>   int k,x;
+   k=0x7ffffffa;
+    for(x=0;x&lt;10;x++) {
+       cout &lt;&lt; k &lt;&lt; "\t";
+       printbinary(k);
+       k++;
+    }  
+</pre>
+<hr>
+<pre>2147483642      0111 1111 1111 1111 1111 1111 1111 1010
+2147483643      0111 1111 1111 1111 1111 1111 1111 1011
+2147483644      0111 1111 1111 1111 1111 1111 1111 1100
+2147483645      0111 1111 1111 1111 1111 1111 1111 1101
+2147483646      0111 1111 1111 1111 1111 1111 1111 1110
+2147483647      0111 1111 1111 1111 1111 1111 1111 1111
+-2147483648     1000 0000 0000 0000 0000 0000 0000 0000
+-2147483647     1000 0000 0000 0000 0000 0000 0000 0001
+-2147483646     1000 0000 0000 0000 0000 0000 0000 0010
+-2147483645     1000 0000 0000 0000 0000 0000 0000 0011
+</pre>
+
+</li><li>
+C++ supports the concept of unsigned integers like
+<br>
+
+<hr>
+<pre>   unsigned int k;
+   k=0x7ffffffa;
+    for(x=0;x&lt;10;x++) {
+       cout &lt;&lt; k &lt;&lt; "\t";
+       printbinary(k);
+       k++;
+    }  
+</pre>
+<hr>
+<pre>2147483642      0111 1111 1111 1111 1111 1111 1111 1010
+2147483643      0111 1111 1111 1111 1111 1111 1111 1011
+2147483644      0111 1111 1111 1111 1111 1111 1111 1100
+2147483645      0111 1111 1111 1111 1111 1111 1111 1101
+2147483646      0111 1111 1111 1111 1111 1111 1111 1110
+2147483647      0111 1111 1111 1111 1111 1111 1111 1111
+2147483648      1000 0000 0000 0000 0000 0000 0000 0000
+2147483649      1000 0000 0000 0000 0000 0000 0000 0001
+2147483650      1000 0000 0000 0000 0000 0000 0000 0010
+2147483651      1000 0000 0000 0000 0000 0000 0000 0011
+</pre>
+<hr>
+</li><li>
+The C/C++ compilers  accept the integer modifiers short and long for
+integers, but the implementation is left to the hardware. You are
+guaranteed that a short will be no bigger than an int and a long will
+be no smaller than an int.
+<br><br>
+</li></ol>
+<hr>
+<p>
+</p></li><li><b>Float</b>
+<ol type="A">
+<br>
+<li>real numbers are stored as floating point approximations of the number.
+Floating point numbers are divided into sign bit, exponent and mantissa. 
+In most hardware the mantissa is
+normalized between with the most significant 1 to the left of the decimal point.The number of bits devoted to the mantissa
+determines the precision of the number, or how many digits may
+be represented. The number of bits in the exponent determines the
+range (magnitude) of the number. 
+<br>
+</li><li>Intel uses the IEEE 754 format
+<br>
+<br> sign bit
+<br> 8 bit exponent
+<br> 23 bit mantissa.
+<br>
+<br>The exponent is stored biased 127. 127 is added to the exponent.
+Exponents larger than 127 are positive, less than 127 are negative exponents.
+<br>
+</li><li>
+Convert 17.125 to floating point.
+<ol type="i">
+<li>Convert 17 to Binary
+<pre>      17 / 2 = 8  r 1
+      8  / 2 = 4  r 0
+      4  / 2 = 2  r 0
+      2  / 2 = 1  r 0
+      1  / 2 = 0  r 1  stop read backwards
+
+      17<sub>10</sub> = 10001<sub>2</sub>
+</pre>
+<br>
+</li><li>Convert .125 to binary
+<pre>      .125 x 2 = 0.25   0
+      .25  x 2 = 0.50   0
+      .5   x 2 = 1.0    1
+       0   stop when zero or you run out of bits
+
+       .125<sub>10</sub> = .001<sub>2</sub>
+</pre>
+<br>
+</li><li>17.125<sub>10</sub> = 10001.001<sub>2</sub>
+<br>
+</li><li>Move the decimal point 4 digits to the left (4 = 100)
+<br>1.0001001 x 2<sup>100</sup>
+<br>
+</li><li>Bias the exponent by 127
+<pre>          0111 1111  (127 in binary)
+	  0000 0100
+	  ----------
+          1000 0011
+</pre>
+</li><li>Sign bit =0
+</li><li>Exponent = 10000011
+</li><li>Mantissa = 0001001
+</li><li>17.125 =  0100 0011 0001 0010 0000 0000 0000 0000= 0x43120000
+</li></ol>
+<p>
+</p></li><li>Other floating float point numbers
+<pre>1 = 0  01111111 00000000000000000000000
+2 = 0  10000000 00000000000000000000000
+4 = 0  10000001 00000000000000000000000
+100 = 0  10000101 10010000000000000000000
+0.0001 = 0  01110001 10100011011011100010111
+1.9 = 0  01111111 11100110011001100110011
+-1.9 = 1 01111111 11100110011001100110011
+</pre>
+</li></ol>
+</li><li>Double
+C++ has a double ( meaning double precision) type that extends the 
+mantissa. Different manufactures use various schemes to divide up the 
+exponent and mantissa. As the following table represents various 64 bit schemes 
+
+<table border="1">
+<tbody><tr><th>Vendor</th><th>Exponent bits</th><th>Low</th><th>High</th><th>Mantissa bits</th><th>Decimal Digits</th>
+</tr><tr><td>IEEE</td><td align="center">11</td><td align="center">-308</td><td align="center">308</td><td align="center">52</td><td align="center">16</td><td>
+</td></tr><tr><td>Cyber</td><td align="center">11</td><td align="center">-293</td><td align="center">323</td><td align="center">48</td><td align="center">15</td><td align="center">
+</td></tr><tr><td>IBM 3081</td><td align="center">7</td><td align="center">-79</td><td align="center">75</td><td align="center">56</td><td align="center">16</td><td align="center">
+</td></tr><tr><td>VAX D</td><td align="center">7</td><td align="center">-39</td><td align="center">38</td><td align="center">56</td><td align="center">17</td><td align="center">
+</td></tr><tr><td>VAX G</td><td align="center">11</td><td align="center">-309</td><td align="center">307</td><td align="center">52</td><td align="center">16</td><td align="center">
+</td></tr><tr><td>Cray</td><td align="center">15</td><td align="center">-2466</td><td align="center">2465</td><td align="center">48</td><td align="center">14</td><td align="center">
+</td></tr></tbody></table>
+<br><br>
+</li><li>In representing a floating point number if the exponent exceeds the
+the maximum we say an overflow has occurred. If the exponent becomes smaller
+than the minimum, we say an underflow has occurred.
+<br>Floating point overflow.
+<pre>#include &lt;iostream.h&gt;
+#include &lt;values.h&gt;
+void main()
+{
+  float maxf= MAXFLOAT;
+  
+  cout &lt;&lt; maxf &lt;&lt;end; 
+  maxf=maxf+MAXFLOAT;
+  cout &lt;&lt; maxf &lt;&lt;endl;
+}
+
+3.40282e+38
+infinity
+</pre>
+<br>Floating point underflow.
+<pre>#include &lt;values.h&gt;
+#include &lt;iostream.h&gt;
+void main()
+{
+  float minf= MINFLOAT;
+  
+  cout &lt;&lt; minf &lt;&lt; endl;   
+  minf=minf/1000000;
+  cout &lt;&lt; minf &lt;&lt; endl;  
+}
+
+1.4013e-45
+0
+</pre>
+<br>
+</li><li> 
+Since floating number numbers are approximations to the actual number
+there exist a problem with roundoff errors as demonstrated here:
+<pre>#include &lt;iostream.h&gt;
+main()
+{
+ float value,sum;
+ int count;
+
+ sum=0.0;
+ value=1e-3;
+ for(count=0;count&lt;1000;count++) sum+=value;
+ cout &lt;&lt; sum &lt;&lt;endl;
+
+ sum=0.0;
+ value=1e-4;
+ for(count=0;count&lt;10000;count++) sum+=value;
+ cout &lt;&lt; sum &lt;&lt;endl;
+
+ sum=0.0;
+ value=1e-5;
+ for(count=0;count&lt;100000;count++) sum+=value;
+ cout &lt;&lt; sum &lt;&lt;endl;
+}
+</pre>
+When this program is run on a 32 and 64 bit words the results are:
+<pre> Results
+
+ 32-bit        64-bit
+
+0.999991      1.000000
+1.000054      1.000000
+1.000990      1.000000
+</pre>
+<p>
+</p></li><li> 
+When doing floating point arithmetic we are concerned with "what is the
+smallest value that will make a difference in logical operations?".
+This is called the machine epsilon. It can be computed:
+<pre>#include &lt;iostream.h&gt;
+main()
+{
+ double eps;
+
+ eps=1.0;
+
+ while(1.0+eps &gt; 1.0) eps/=2;
+ eps*=2;
+ cout &lt;&lt; "epsilon = " &lt;&lt; eps &lt;&lt; endl;
+}
+</pre>
+When this was compiled and run a 32 bit architecture the result was:
+<br>
+epsilon = 2.220446e-16
+<br>
+On a pentium the result was
+<br>
+epsilon = 1.084202e-19
+<br>
+Since the floating point values are approximations, this leads us to an
+important rule of thumb.
+<b>
+NEVER USE EQUALITY TESTS ON FLOATS
+</b>
+<br><br>
+</li><li> Mixed type expressions.  
+<br>If the operands are  the same type then the
+result is of that type. If operands are of different types, the "narrow"
+types are converted to the "widest" type in the expression. This
+<b>
+automatic promotion
+</b>
+follows the general progression:
+<br>
+ char-&gt;short-&gt;int-&gt;long-&gt;float-&gt;double
+<br>
+<pre> int k=5;
+ float x,y=20.0;
+
+ x=y/k;
+</pre>
+<ol type="A">
+<li> 
+The assignment operator uses the type of the left hand side.  This may
+cause warnings when demotion occurs.
+</li><li> 
+To change the type explicitly use the
+<i> static_cast</i> notation. 
+<pre>  float x;
+  int a=7, b=3;
+
+  x=a/b;
+</pre>
+What is the result?
+<pre>  float x;
+  int a=7, b=3;
+
+  x=static_cast&lt;float&gt;a/b;
+</pre>
+Now what is the result?
+</li></ol>
+<br>
+<p>
+</p></li><li> Size of Variables 
+<br>
+The size of different types can be discovered with the sizeof operator. It
+returns the size of the variable ( or structure) in bytes (8 bits). The
+following program will print out the sizes of the different types.
+<pre>#include &lt;iostream.h&gt;
+void main()
+{
+ cout &lt;&lt; "char   " &lt;&lt; sizeof(char)   &lt;&lt; endl;
+ cout &lt;&lt; "short  " &lt;&lt; sizeof(short)  &lt;&lt; endl;
+ cout &lt;&lt; "int    " &lt;&lt; sizeof(int)    &lt;&lt; endl;
+ cout &lt;&lt; "long   " &lt;&lt; sizeof(long)   &lt;&lt; endl;
+ cout &lt;&lt; "float  " &lt;&lt; sizeof(float)  &lt;&lt; endl;
+ cout &lt;&lt; "double " &lt;&lt; sizeof(double) &lt;&lt; endl;
+}
+</pre>
+I got the following results from running on different architectures:
+<br>
+<table border="1">
+<tbody><tr><th colspan="7">Size of Variables</th>
+</tr><tr><th>Type</th><th align="center">Vax</th><th align="center">Sun</th><th align="center">Convex</th><th align="center">Cray</th><th align="center">Apollo</th><th>MS VC++</th>
+</tr><tr><th>char  </th><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td>
+</tr><tr><th>short </th><td align="center">2</td><td align="center">2</td><td align="center">2</td><td align="center">8</td><td align="center">2</td><td align="center">2</td>
+</tr><tr><th>int   </th><td align="center">4</td><td align="center">4</td><td align="center">4</td><td align="center">8</td><td align="center">4</td><td align="center">4</td>
+</tr><tr><th>long  </th><td align="center">4</td><td align="center">4</td><td align="center">4</td><td align="center">8</td><td align="center">4</td><td align="center">4</td>
+</tr><tr><th>float </th><td align="center">4</td><td align="center">4</td><td align="center">4</td><td align="center">8</td><td align="center">4</td><td align="center">4</td>
+</tr><tr><th>double</th><td align="center">8</td><td align="center">8</td><td align="center">8</td><td align="center">8</td><td align="center">8</td><td align="center">8</td>
+</tr></tbody></table>
+<br>
+Running on the dev C++ compiler I get:
+<pre>char   1
+bool   1
+short  2
+int    4
+long   4
+float  4
+double 8
+Press any key to continue . . .
+</pre>
+<p>
+</p></li><li> Declaring Variables 
+<br>
+In general variables may be declared inside
+of a block of code. A block is denoted by { }. Variables inside 
+of a block are local to that block.
+<pre>int main()
+{
+  int a,b;
+  float c;
+  char d;
+}
+</pre>
+<ol type="A">
+<li> 
+Variables may be initialized when declared with the = operator like:
+<pre>int main() 
+{
+  int a=1;
+  float b=1.2e3;
+  char c='a';
+}
+</pre>
+Local variables are initialized every time  the block of code
+is executed.
+<pre>#include &lt;iostream&gt;
+using namespace std;
+ 
+void f();  // function prototype
+ 
+int main()
+{
+   f();  // call function f
+   f();  // call function f
+   system("pause");
+   return 0;
+ 
+}
+void f()  // function f
+{
+  int localX=1;     // declare and set local varaible
+ 
+  cout &lt;&lt; "In Function f " &lt;&lt; endl;
+  cout &lt;&lt; "localX is " &lt;&lt; localX &lt;&lt; endl;
+  localX=2;
+  return;
+}
+ 
+</pre>
+<hr>
+<pre>In Function f
+localX is 1
+In Function f
+localX is 1
+Press any key to continue . . .
+</pre>
+</li></ol>
+<p>
+</p></li><li>Conditions
+<pre>#include &lt;limits&gt;
+#include &lt;float.h&gt;
+#include &lt;iostream&gt;
+ 
+using namespace std;
+int main()
+{
+  int max=INT_MAX;
+  cout &lt;&lt; "The maximum value for an integer is : " &lt;&lt; max &lt;&lt; endl;
+  cout &lt;&lt; "Add +1 to go over the max - overflow" &lt;&lt; endl;
+  max++;
+  cout &lt;&lt; "Now the value is : " &lt;&lt; max &lt;&lt; endl;
+  cout &lt;&lt; endl;
+ 
+  float maxf= FLT_MAX;
+  cout &lt;&lt; "The Maximum Float Value is : " &lt;&lt;  maxf &lt;&lt;endl;
+  cout &lt;&lt; "Times 1 million to force overflow" &lt;&lt; endl;
+  maxf*=1.0e6;
+  cout &lt;&lt; "After overflow : " &lt;&lt; maxf &lt;&lt;endl;
+  cout &lt;&lt; endl;
+  
+  float minf=FLT_MIN;
+  cout &lt;&lt; "The Minimum Float Value is  " &lt;&lt; minf &lt;&lt; endl;
+  cout &lt;&lt; "Divide by 1 trillion to force underflow " &lt;&lt; endl;
+  minf/=1.0e12;
+  cout &lt;&lt; "After underflow : " &lt;&lt; minf &lt;&lt; endl;
+ 
+  system("pause");
+  return 0;
+}
+ 
+</pre>
+<hr>
+<pre>The maximum value for an integer is : 2147483647
+Add +1 to go over the max - overflow
+Now the value is : -2147483648
+ 
+The Maximum Float Value is : 3.40282e+038
+Times 1 million to force overflow
+After overflow : 1.#INF
+ 
+The Minimum Float Value is  1.17549e-038
+Divide by 1 trillion to force underflow
+After underflow : 0
+Press any key to continue . . .
+</pre>
+</li></ol>
+<hr>
+
+
+</body></html>

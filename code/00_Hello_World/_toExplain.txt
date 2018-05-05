@@ -1,0 +1,5 @@
+#1 Kommentare / Single & Multiline
+#2 Präprozessor Anweisung include
+#3 cout -- operator << -- endl
+#4 using namespace std; warum wird diese Anweisung notiert
+#5 Fehlerbehandlung - ; fehlt, Klammer nicht geschlossen, ungültiger Befehl
