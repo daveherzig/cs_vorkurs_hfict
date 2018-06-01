@@ -1,8 +1,39 @@
 \documentclass[a4paper,10pt]{article}
+\topmargin-1cm
+\addtolength{\textheight}{2.5cm}
+\addtolength{\textwidth}{2cm}
+
+\usepackage{verbatim}
+\usepackage[german]{babel}
+\usepackage[latin1]{inputenc}
 \usepackage{struktex}
+
+\setlength{\parindent}{0cm}
+
+\title{Latex Template}
+\author{Patrik S"utterlin}
+\date{WS2018}
+
 \begin{document}
+
+HF-ICT - H"ohere Fachschule f"ur Informations- und Kommunikationstechnologie\\
+CH 4132 Muttenz\\
+Patrik S"utterlin
+
+\vspace{2mm}
+
 \begin{center}
-\begin{struktogramm}(125,40)[Loesung 6-1 Variante 1: Schaltjahrbestimmung anhand einer Jahreszahl]
+{\Large \bf Vorkurs Informatik}\\
+Exercise sheet 6 - Nassi-Schneiderman Diagrams
+\end{center}
+
+\vspace{2mm}
+\line(1,0){400}
+\vspace{5mm}
+
+
+\begin{center}
+\begin{struktogramm}(125,42)[Loesung 6-1 Variante 1: Schaltjahrbestimmung anhand einer Jahreszahl]
   \ifthenelse{4}{4}{Jahreszahl ist restfrei teilbar durch 100}{ja}{nein}
     \ifthenelse{2}{2}{Jahreszahl ist restfrei teilbar durch 400}{ja}{nein}
       \assign{Jahr ist ein Schaltjahr}
@@ -18,8 +49,9 @@
   \ifend
 \end{struktogramm}
 \end{center}
+\line(1,0){400}
+\vspace{4mm}
 
-.\\
 Daraus lassen sich folgende logischen Ausdr\"ucke ableiten:\\ \\
 \textbf{p =} Schaltjahr \\
 \textbf{q =} kein Schaltjahr \\
@@ -27,9 +59,11 @@ Daraus lassen sich folgende logischen Ausdr\"ucke ableiten:\\ \\
 \textbf{Variablen:} \\
 \textbf{j =} Jahreszahl \\
 \\
-$\mathbf{p} = ((j \bmod{100} = 0) \land (j \bmod{400} = 0)) \lor ((j \bmod{100} \neq 0) \land (j \bmod 4 = 0))$ 
+$\mathbf{p} = ((j \bmod{100} = 0) \land (j \bmod{400} = 0)) \lor ((j \bmod{100} \neq 0) \land (j \bmod 4 = 0))$ \\
 $\mathbf{q} = ((j \bmod{100} = 0) \land (j \bmod{400} \neq 0)) \lor ((j \bmod{100} \neq 0) \land (j \bmod 4 \neq 0))$ 
 
+\vspace{4mm}
+\line(1,0){400}
 \begin{center}
 \begin{struktogramm}(125,75)[Loesung 6-1 Variante 2: Schaltjahrbestimmung anhand einer Jahreszahl]
   \ifthenelse{4}{1}{Jahreszahl ist restfrei teilbar durch 4}{ja}{nein}
@@ -47,16 +81,106 @@ $\mathbf{q} = ((j \bmod{100} = 0) \land (j \bmod{400} \neq 0)) \lor ((j \bmod{10
   \ifend
 \end{struktogramm}
 
-\begin{struktogramm}(125,50)[Loesung 6-2: Rabatt je nach verkaufter Menge]
-  \ifthenelse{5}{2}{Verkaufte Menge ist gr\"osser oder gleich 100}{ja}{nein}
-    \ifthenelse{2}{4}{Verkaufte Mege ist gr\"osser oder gleich 10}{ja}{nein}
-      \assign{Rabatt = 8\%}
+\begin{struktogramm}(125,40)[Loesung 6-2: Rabatt je nach verkaufter Menge]
+    \ifthenelse{5}{2}{Verkaufte Menge ist gr\"osser oder gleich 100}{ja}{nein}
+      \ifthenelse{2}{4}{Verkaufte Mege ist gr\"osser oder gleich 10}{ja}{nein}
+        \assign{Rabatt = 8\%}
+      \change
+        \assign{Rabatt = 5\%}
+      \ifend
     \change
-	\assign{Rabatt = 5\%}
-    \ifend
-  \change
       \assign{Rabatt = 0\%}
-  \ifend
+    \ifend
+\end{struktogramm}
+
+\vspace{4mm}
+\line(1,0){400}
+\vspace{4mm}
+
+\begin{struktogramm}(125,140)[Loesung 6-3: Taschenrechner if-cases]
+  \assign
+  {%
+    \begin{declaration}[Local Variables:]
+     \description{\pVar{z1}}{a \pKey{double} variable - Number located before the operator in the calculation}
+     \description{\pVar{z2}}{a \pKey{double} variable - Number located the operator in the calculation}
+     \description{\pVar{op}}{a \pKey{char} variable - A character that specifies the operator type used in the calculation (* / - +)}
+     \description{\pVar{result}}{a \pKey{double} variable - Stores the result of the calculation}
+     \description{\pVar{repeat}}{a \pKey{char} variable - Stores the user decision (continue / exit)}
+    \end{declaration}
+   }
+  \until{\(repeat == 'y'\)}   
+    \assign{Prompt for Parameter z1}
+    \assign{\(z1 \gets cin\)}
+    \assign{Prompt for Operator}
+    \assign{\(op \gets cin\)}
+    \assign{Prompt for Parameter z2}
+    \assign{\(z2 \gets cin\)}
+    
+    \ifthenelse{5}{5}{\(op\) equals the char '*'}{yes}{no}
+      \assign{\(result = z1 * z2\)}
+    \change
+      \assign{No Action}
+    \ifend
+
+    \ifthenelse{5}{5}{\(op\) equals the char '/'}{yes}{no}
+      \assign{\(result = z1 / z2\)}
+    \change
+      \assign{No Action}
+    \ifend
+    
+    \ifthenelse{5}{5}{\(op\) equals the char '+'}{yes}{no}
+      \assign{\(result = z1 + z2\)}
+    \change
+      \assign{No Action}
+    \ifend
+    
+    \ifthenelse{5}{5}{\(op\) equals the char '-'}{yes}{no}
+      \assign{\(result = z1 - z2\)}
+    \change
+      \assign{No Action}
+    \ifend         
+    
+    \assign{Print \(result\) to screen}
+    \assign{Ask the user if another calculation shall be performed}
+    \assign{\(repeat \gets cin\)}
+    
+  \untilend  
+\end{struktogramm}
+
+\begin{struktogramm}(125,140)[Loesung 6-3: Taschenrechner switch-case]
+  \assign
+  {%
+    \begin{declaration}[Local Variables:]
+     \description{\pVar{z1}}{a \pKey{double} variable - Number located before the operator in the calculation}
+     \description{\pVar{z2}}{a \pKey{double} variable - Number located the operator in the calculation}
+     \description{\pVar{op}}{a \pKey{char} variable - A character that specifies the operator type used in the calculation (* / - +)}
+     \description{\pVar{result}}{a \pKey{double} variable - Stores the result of the calculation}
+     \description{\pVar{repeat}}{a \pKey{char} variable - Stores the user decision (continue / exit)}
+    \end{declaration}
+   }
+  \until{\(repeat == 'y'\)}   
+    \assign{Prompt for Parameter z1}
+    \assign{\(z1 \gets cin\)}
+    \assign{Prompt for Operator}
+    \assign{\(op \gets cin\)}
+    \assign{Prompt for Parameter z2}
+    \assign{\(z2 \gets cin\)}
+    
+    \case[20]{2}{4}{switch(\(op\))}{'*'}
+   \assign{\(result = z1 * z2\)}
+   \switch{'/'}
+   \assign{\(result = z1 / z2\)}
+   \switch{'+'}
+   \assign{\(result = z1 + z2\)}
+   \switch{'-'}
+   \assign{\(result = z1 - z2\)}
+   \caseend
+
+    \assign{Print \(result\) to screen}
+    \assign{Ask the user if another calculation shall be performed}
+    \assign{\(repeat \gets cin\)}
+    
+  \untilend  
 \end{struktogramm}
 \end{center}
 \end{document}
