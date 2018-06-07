@@ -97,7 +97,7 @@ $\mathbf{q} = ((j \bmod{100} = 0) \land (j \bmod{400} \neq 0)) \lor ((j \bmod{10
 \line(1,0){400}
 \vspace{4mm}
 
-\begin{struktogramm}(125,140)[Loesung 6-3: Taschenrechner if-cases]
+\begin{struktogramm}(125,140)[Loesung 6-3: Taschenrechner if-case Solution]
   \assign
   {%
     \begin{declaration}[Local Variables:]
@@ -105,28 +105,14 @@ $\mathbf{q} = ((j \bmod{100} = 0) \land (j \bmod{400} \neq 0)) \lor ((j \bmod{10
      \description{\pVar{z2}}{a \pKey{double} variable - Number located the operator in the calculation}
      \description{\pVar{op}}{a \pKey{char} variable - A character that specifies the operator type used in the calculation (* / - +)}
      \description{\pVar{result}}{a \pKey{double} variable - Stores the result of the calculation}
-     \description{\pVar{repeat}}{a \pKey{char} variable - Stores the user decision (continue / exit)}
     \end{declaration}
    }
-  \until{\(repeat == 'y'\)}   
     \assign{Prompt for Parameter z1}
     \assign{\(z1 \gets cin\)}
-    \assign{Prompt for Operator}
+    \assign{Prompt for Operator op}
     \assign{\(op \gets cin\)}
     \assign{Prompt for Parameter z2}
     \assign{\(z2 \gets cin\)}
-    
-    \ifthenelse{5}{5}{\(op\) equals the char '*'}{yes}{no}
-      \assign{\(result = z1 * z2\)}
-    \change
-      \assign{No Action}
-    \ifend
-
-    \ifthenelse{5}{5}{\(op\) equals the char '/'}{yes}{no}
-      \assign{\(result = z1 / z2\)}
-    \change
-      \assign{No Action}
-    \ifend
     
     \ifthenelse{5}{5}{\(op\) equals the char '+'}{yes}{no}
       \assign{\(result = z1 + z2\)}
@@ -139,15 +125,23 @@ $\mathbf{q} = ((j \bmod{100} = 0) \land (j \bmod{400} \neq 0)) \lor ((j \bmod{10
     \change
       \assign{No Action}
     \ifend         
-    
+        
+    \ifthenelse{5}{5}{\(op\) equals the char '*'}{yes}{no}
+      \assign{\(result = z1 * z2\)}
+    \change
+      \assign{No Action}
+    \ifend
+
+    \ifthenelse{5}{5}{\(op\) equals the char '/'}{yes}{no}
+      \assign{\(result = z1 / z2\)}
+    \change
+      \assign{No Action}
+    \ifend
+
     \assign{Print \(result\) to screen}
-    \assign{Ask the user if another calculation shall be performed}
-    \assign{\(repeat \gets cin\)}
-    
-  \untilend  
 \end{struktogramm}
 
-\begin{struktogramm}(125,140)[Loesung 6-3: Taschenrechner switch-case]
+\begin{struktogramm}(125,140)[Loesung 6-3: Taschenrechner switch-case Solution + Loop]
   \assign
   {%
     \begin{declaration}[Local Variables:]
@@ -155,31 +149,30 @@ $\mathbf{q} = ((j \bmod{100} = 0) \land (j \bmod{400} \neq 0)) \lor ((j \bmod{10
      \description{\pVar{z2}}{a \pKey{double} variable - Number located the operator in the calculation}
      \description{\pVar{op}}{a \pKey{char} variable - A character that specifies the operator type used in the calculation (* / - +)}
      \description{\pVar{result}}{a \pKey{double} variable - Stores the result of the calculation}
-     \description{\pVar{repeat}}{a \pKey{char} variable - Stores the user decision (continue / exit)}
+     \description{\pVar{answer}}{a \pKey{char} variable - Stores the user decision (continue / exit)}
     \end{declaration}
    }
-  \until{\(repeat == 'y'\)}   
+  \until{\(answer != 'x'\)}   
     \assign{Prompt for Parameter z1}
     \assign{\(z1 \gets cin\)}
-    \assign{Prompt for Operator}
+    \assign{Prompt for Operator op}
     \assign{\(op \gets cin\)}
     \assign{Prompt for Parameter z2}
     \assign{\(z2 \gets cin\)}
     
-    \case[20]{2}{4}{switch(\(op\))}{'*'}
-   \assign{\(result = z1 * z2\)}
-   \switch{'/'}
-   \assign{\(result = z1 / z2\)}
-   \switch{'+'}
+    \case[20]{2}{4}{switch(\(op\))}{'+'}
    \assign{\(result = z1 + z2\)}
    \switch{'-'}
    \assign{\(result = z1 - z2\)}
+   \switch{'*'}
+   \assign{\(result = z1 * z2\)}
+   \switch{'/'}
+   \assign{\(result = z1 / z2\)}
    \caseend
 
     \assign{Print \(result\) to screen}
     \assign{Ask the user if another calculation shall be performed}
     \assign{\(repeat \gets cin\)}
-    
   \untilend  
 \end{struktogramm}
 \end{center}
